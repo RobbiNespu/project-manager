@@ -1,0 +1,20 @@
+<?php
+
+// Default route from scaffolding
+// Feel free to change it.
+
+$app->get('/{{ module }}/login',function() use ($app){
+
+(new SIOFramework\Acl\Controller\AccessController(
+    $app, new \SIOFramework\Common\Factory\StandardFactory($app)
+))->login('{{ loginForward }}');
+
+})->via('GET','POST')->name('{{ module }}-login');
+
+$app->get('/{{ module }}/logout',function() use ($app){
+
+(new SIOFramework\Acl\Controller\AccessController(
+    $app, new \SIOFramework\Common\Factory\StandardFactory($app)
+))->logout('{{ logoutForward }}');
+
+})->via('GET','POST')->name('{{ module }}-logout');
