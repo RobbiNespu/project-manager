@@ -2,6 +2,7 @@
 
 namespace ProjectManager\Projects\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use SIOFramework\Common\Model\Model;
 
@@ -37,10 +38,26 @@ class Project extends Model{
     private $startingDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ProjectManager\Customers\Model\Customer", inversedBy="projects", cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="ProjectManager\Customers\Model\Customer", inversedBy="projects")
      * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
      */
     private $customer;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ProjectManager\Projects\Model\Product",
+     *      mappedBy="project",
+     *      cascade={"remove"})
+     */
+    private $products;
+
+    /**
+     * Project constructor.
+     */
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
+
 
     // Getters and Setters
     public function getId()
@@ -92,5 +109,35 @@ class Project extends Model{
     {
         $this->customer = $customer;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * @param mixed $products
+     */
+    public function setProducts($products)
+    {
+        $this->products = $products;
+    }
+
+
+    public function getTotalCost()
+    {
+        $total = 0;
+
+        foreach ($this->products as $product)
+        {
+            $total += $product->getValue();
+        }
+
+        return $total;
+    }
+
 
 }

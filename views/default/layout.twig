@@ -53,17 +53,24 @@ and open the template in the editor.
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-3 col-md-2">
+            <div class="col-sm-3 col-md-3">
+
                 <ul class="nav nav-sidebar">
+                    <h5 class="list-group-item list-group-item-menu">Users Module</h5>
                     <li><a href="{{ app.urlFor('admin-users-list') }}">Users</a></li>
                     <li><a href="#">User Report</a></li>
                 </ul>
+
+
                 <ul class="nav nav-sidebar">
+                    <h5 class="list-group-item list-group-item-menu">Customers Module</h5>
                     <li><a href="{{ app.urlFor('Customers-Customer-List') }}">Customers</a></li>
+
+                    <h5 class="list-group-item list-group-item-menu">Projects Module</h5>
                     <li><a href="{{ app.urlFor('Projects-Project-List') }}">Projects</a></li>
                 </ul>
             </div>
-            <div class="col-sm-9 col-md-10">
+            <div class="col-sm-9 col-md-9">
 
                 {% block content %}
                 {% endblock %}

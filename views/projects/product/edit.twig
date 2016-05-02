@@ -1,0 +1,43 @@
+{% extends 'default/layout.twig' %}
+
+
+{% block content %}
+
+    <h2>{% if obj.getId() %}Edit{% else %}Create{% endif %} Product</h2>
+    <h5>Project: {{ project.getName() }}</h5>
+
+    <h5>
+        <a class="btn btn-md btn-info" href="{{ app.urlFor('Projects-Products-List',{projectId:project.getId()}) }}">
+            <i class="fa fa-arrow-circle-left"></i>
+            Back
+        </a>
+    </h5>
+
+    <hr>
+
+
+    <div>
+        <form method="post" class="form-group">
+
+            <input type="hidden" name="id" value="{{obj.getId()}}" />
+            <input type="hidden" name="projectId" value="{{project.getId()}}" />
+
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value="{{obj.getName()}}" class="form-control"/>
+
+            <label for="description">Description</label>
+            <input type="text" id="description" name="description" value="{{obj.getDescription()}}" class="form-control"/>
+
+            <label for="value">Value $</label>
+            <input type="number" id="value" name="value" value="{{obj.getValue()}}" class="form-control"/>
+
+            <label for="estimatedHours">Estimated Hours</label>
+            <input type="number" id="estimatedHours" name="estimatedHours" value="{{obj.getEstimatedHours()}}" class="form-control"/>
+
+            <br>
+
+            <input type="submit" value="Save" class="btn btn-success btn-md"/>
+        </form>
+    </div>
+
+{% endblock %}
