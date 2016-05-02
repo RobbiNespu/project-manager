@@ -1,0 +1,14 @@
+<div id="{{ elementName }}"></div>
+
+<script>
+    Morris.Donut({
+        element: '{{ elementName }}',
+        data: [
+            {% set first = true %}
+            {% for key,val in graphData %}
+            {% if not first %},{% else %}{% set first = false %}{% endif %}{value: {{ val }}, label: '{{ key }}'}
+            {% endfor %}
+        ],
+        formatter: function (x) { return x }
+    });
+</script>
