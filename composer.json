@@ -18,7 +18,8 @@
     ],
     "autoload": {
          "psr-4": {
-             "SIOFramework\\" : "src/SIOFramework"
+             "SIOFramework\\" : "src/SIOFramework",
+             "ProjectManager\\" : "src/ProjectManager"
          }
     },
     "autoload-dev" : {

@@ -21,7 +21,7 @@ $app->container->singleton('orm', function() use ($app) {
     $connectionOptions = array(
         'driver'   => 'pdo_mysql',
         'host'     => 'localhost',
-        'dbname'   => 'sio_framework',
+        'dbname'   => 'projmanager',
         'user'     => 'root',
         'password' => 'root',
     );
