@@ -1,0 +1,52 @@
+{% extends 'default/layout.twig' %}
+
+{% block content %}
+
+    <h2>Settings</h2>
+
+    <hr>
+
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    {% if success %}
+        <div class="alert alert-success">
+            {{ success }}
+        </div>
+    {% endif %}
+
+    <div class="col-md-6 col-sm-12">
+
+        <h4>Password Changing</h4>
+        <br>
+
+        <form method="post" class="form-group">
+
+            <label for="oldpassword">Old Password</label>
+            <input id="oldpassword" type="password" name="oldpassword" value="{{ oldpassword }}" class="form-control" placeholder="" required autofocus>
+
+            <br>
+
+            <label for="newpassword">New Password</label>
+            <input id="newpassword" type="password" name="newpassword" value="{{ newpassword }}" class="form-control" placeholder="" required>
+
+            <br>
+
+            <label for="newpasswordconf">Repeat New Password</label>
+            <input id="newpasswordconf" type="password" name="newpasswordconf" value="{{ newpasswordconf }}" class="form-control" placeholder="" required>
+
+            <hr>
+
+            <p style="text-align: center;">
+                <button class="btn btn-md btn-warning" type="submit">Change Password</button>
+            </p>
+
+        </form>
+
+    </div>
+
+
+{% endblock %}

@@ -6,4 +6,4 @@ $app->get('/Dashboard',function() use ($app){
 
 (new ProjectManager\Dashboard\Controller\DashboardController($app))->index();
 
-})->via('GET','POST')->name('dashboard');
+})->via('GET','POST')->name('Dashboard');

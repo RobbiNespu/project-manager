@@ -1,0 +1,40 @@
+{% extends 'default/layout.twig' %}
+
+
+{% block content %}
+
+    <h2>Projects</h2>
+
+    <hr>
+
+    <div class="create-div">
+        <a class="btn btn-md btn-info" href="{{ app.urlFor('Projects-Project-Create') }}">Add Project</a>
+    </div>
+
+    <div class="table-div">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Customer</th>
+                    <th>Starting Date</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in list %}
+                    <tr>
+                        <td>{{ obj.getName() }}</td>
+                        <td>{{ obj.getCustomer().getName() }}</td>
+                        <td>{{ obj.getStartingDate().format('m/d/Y') }}</td>
+                        <td>
+                            <a class="btn btn-info" href="{{ app.urlFor('Projects-Project-Edit', {'id':obj.getId()}) }}">Edit</a>
+                            <a class="btn btn-danger" href="{{ app.urlFor('Projects-Project-Delete', {'id':obj.getId()}) }}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

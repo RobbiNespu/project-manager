@@ -1,0 +1,35 @@
+{% extends 'default/layout.twig' %}
+
+
+{% block content %}
+
+    <h2>{% if obj.getId() %}Edit{% else %}Create{% endif %} Customer</h2>
+    <hr>
+
+
+    <div>
+        <form method="post" class="form-group">
+            <input type="hidden" name="id" value="{{obj.getId()}}" />
+
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value="{{obj.getname()}}" class="form-control"/>
+
+            <label for="nickname">Nickname</label>
+            <input type="text" id="nickname" name="nickname" value="{{obj.getnickname()}}" class="form-control"/>
+
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" value="{{obj.getemail()}}" class="form-control"/>
+
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" name="phone" value="{{obj.getphone()}}" class="form-control"/>
+
+            <label for="state">State</label>
+            <input type="text" id="state" name="state" value="{{obj.getstate()}}" class="form-control"/>
+
+            <br>
+
+            <input type="submit" class="btn btn-md btn-success" value="Save" />
+        </form>
+    </div>
+
+{% endblock %}

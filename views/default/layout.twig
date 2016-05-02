@@ -17,6 +17,7 @@ and open the template in the editor.
     <link rel="stylesheet" href="{{ resources }}/css/bootstrap.min.css" />
     <link rel="stylesheet" href="{{ resources }}/css/admin.css" />
     <link rel="stylesheet" href="{{ resources }}/css/morris.css" />
+    <link rel="stylesheet" href="{{ resources }}/css/datatables.min.css" />
     <link rel="stylesheet" href="{{ resources }}/css/font-icons/font-awesome/css/font-awesome.min.css" />
 
 
@@ -24,6 +25,7 @@ and open the template in the editor.
     <script src="{{ resources }}/js/bootstrap.min.js"></script>
     <script src="{{ resources }}/js/raphael.min.js"></script>
     <script src="{{ resources }}/js/morris.min.js"></script>
+    <script src="{{ resources }}/js/datatables.min.js"></script>
 </head>
 
 <body>
@@ -37,11 +39,12 @@ and open the template in the editor.
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Project Manager</a>
+                <a class="navbar-brand" href="{{ app.urlFor('Dashboard') }}">Project Manager</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ app.urlFor('dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ app.urlFor('Dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ app.urlFor('Settings') }}">Settings</a></li>
                     <li><a href="{{ app.urlFor('AccessController-logout') }}">Logout</a></li>
                 </ul>
             </div>
@@ -52,17 +55,12 @@ and open the template in the editor.
         <div class="row">
             <div class="col-sm-3 col-md-2">
                 <ul class="nav nav-sidebar">
-                    <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Reports</a></li>
-                    <li><a href="#">Analytics</a></li>
-                    <li><a href="#">Export</a></li>
+                    <li><a href="{{ app.urlFor('admin-users-list') }}">Users</a></li>
+                    <li><a href="#">User Report</a></li>
                 </ul>
                 <ul class="nav nav-sidebar">
-                    <li><a href="">Nav item</a></li>
-                    <li><a href="">Nav item again</a></li>
-                    <li><a href="">One more nav</a></li>
-                    <li><a href="">Another nav item</a></li>
-                    <li><a href="">More navigation</a></li>
+                    <li><a href="{{ app.urlFor('Customers-Customer-List') }}">Customers</a></li>
+                    <li><a href="{{ app.urlFor('Projects-Project-List') }}">Projects</a></li>
                 </ul>
             </div>
             <div class="col-sm-9 col-md-10">
