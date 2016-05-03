@@ -34,6 +34,12 @@
             <label for="estimatedHours">Estimated Hours</label>
             <input type="number" id="estimatedHours" name="estimatedHours" value="{{obj.getEstimatedHours()}}" class="form-control"/>
 
+            <label for="estimatedHours">Is it Paid?</label>
+            <select id="paid" name="paid" class="form-control">
+                <option value="0" {% if not obj.getPaid() %}selected{% endif %}>No</option>
+                <option value="1" {% if obj.getPaid() %}selected{% endif %}>Yes</option>
+            </select>
+
             <br>
 
             <input type="submit" value="Save" class="btn btn-success btn-md"/>

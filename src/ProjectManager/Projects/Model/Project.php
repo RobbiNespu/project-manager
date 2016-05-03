@@ -139,5 +139,18 @@ class Project extends Model{
         return $total;
     }
 
+    public function getTotalPaid()
+    {
+        $total = 0;
+
+        foreach ($this->products as $product)
+        {
+            if($product->getPaid())
+                $total += $product->getValue();
+        }
+
+        return $total;
+    }
+
 
 }

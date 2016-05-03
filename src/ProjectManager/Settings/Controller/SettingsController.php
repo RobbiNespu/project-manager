@@ -34,6 +34,11 @@ class SettingsController extends SecuredController
                     throw new \Exception('Password does not match.');
                 }
 
+                if(sizeof($user->getPassword()) < 6)
+                {
+                    throw new \Exception('Password must be bigger than 6 characters');
+                }
+
                 $user->setPassword($params['newpassword']);
                 $userFactory->persist($user);
 

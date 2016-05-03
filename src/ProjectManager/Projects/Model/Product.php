@@ -41,6 +41,10 @@ class Product extends Model{
      */
     private $estimatedHours;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $paid;
 
     /**
      * @ORM\ManyToOne(targetEntity="ProjectManager\Projects\Model\Project", inversedBy="products")
@@ -90,6 +94,23 @@ class Product extends Model{
     {
         $this->estimatedHours = $estimatedHours;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPaid()
+    {
+        return $this->paid;
+    }
+
+    /**
+     * @param mixed $paid
+     */
+    public function setPaid($paid)
+    {
+        $this->paid = $paid;
+    }
+
 
     /**
      * @return mixed

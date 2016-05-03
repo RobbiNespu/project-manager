@@ -62,7 +62,7 @@ class ProductController extends SecuredController
             $obj->hydrate($this->data);
 
             $dbFactory->persist($obj);
-            $this->app->redirect($this->app->urlFor('Projects-Product-List',array('projectId'=>$projectId)));
+            $this->app->redirect($this->app->urlFor('Projects-Products-List',array('projectId'=>$projectId)));
 
             return;
         }

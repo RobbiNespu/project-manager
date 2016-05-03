@@ -8,7 +8,7 @@ $app->get('/login',function() use ($app){
 
 (new SIOFramework\Acl\Controller\AccessController(
     $app, new \SIOFramework\Common\Factory\StandardFactory($app)
-))->login('dashboard');
+))->login('Dashboard');
 
 })->via('GET','POST')->name('AccessController-login');
 
