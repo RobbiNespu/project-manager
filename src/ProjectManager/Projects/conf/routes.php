@@ -53,3 +53,9 @@ $app->get('/Projects/Products/delete/:projectId/:id',function($projectId,$id) us
     (new ProjectManager\Projects\Controller\ProductController($app))->editProduct($projectId, $id);
 
 })->via('GET','POST')->name('Projects-Product-Delete');
+
+$app->get('/Projects/Products/Overview/',function() use ($app){
+
+    (new ProjectManager\Projects\Controller\ProductController($app))->productsOverview();
+
+})->via('GET','POST')->name('Projects-Products-Overview');

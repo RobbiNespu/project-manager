@@ -3,13 +3,19 @@
 namespace ProjectManager\Projects\Controller;
 
 use ProjectManager\Customers\Model\Customer;
+use SIOFramework\Acl\Controller\SecuredController;
 use SIOFramework\Common\Controller\DefaultController;
 use SIOFramework\Common\Factory\StandardFactory;
 use ProjectManager\Projects\Model\Project;
 
 
-class ProjectController extends DefaultController
+class ProjectController extends SecuredController
 {
+    protected function userHasAccess()
+    {
+        return $this->loggedUserHasRole('ADMIN');
+    }
+
     public function listProject()
     {
         $dbFactory = new StandardFactory($this->app);

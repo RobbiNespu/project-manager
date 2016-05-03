@@ -4,7 +4,6 @@ namespace ProjectManager\Projects\Controller;
 
 use ProjectManager\Projects\Model\Project;
 use SIOFramework\Acl\Controller\SecuredController;
-use SIOFramework\Common\Controller\DefaultController;
 use SIOFramework\Common\Factory\StandardFactory;
 use ProjectManager\Projects\Model\Product;
 use Slim\Slim;
@@ -122,6 +121,17 @@ class ProductController extends SecuredController
         }
 
         $this->app->redirect($this->app->urlFor('Projects-Products-List').'?success=true');
+    }
+
+    public function productsOverview()
+    {
+        $dbFactory = new StandardFactory($this->app);
+        $obj = $dbFactory->selectAll('ProjectManager\Projects\Model\Product');
+
+        $this->data['products'] = $obj;
+
+
+        $this->render('projects/product/overview.twig',$this->data);
     }
 
 }

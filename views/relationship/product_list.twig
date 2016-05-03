@@ -1,4 +1,4 @@
-{% extends 'default/layout.twig' %}
+{% extends 'default/relationshiplayout.twig' %}
 
 
 {% block content %}
@@ -6,7 +6,7 @@
     <h2>Details of {{ project.getName() }}</h2>
 
     <h5>
-        <a class="btn btn-md btn-info" href="{{ app.urlFor('Projects-Project-List') }}">
+        <a class="btn btn-md btn-info" href="{{ app.urlFor('Relationship-Projects') }}">
             <i class="fa fa-arrow-circle-left"></i>
             Back
         </a>
@@ -21,10 +21,7 @@
         </div>
         <div class="panel-body">
 
-            <h5>Customer:
-                <a href="{{ app.urlFor('Customers-Customer-Edit',{id:project.getCustomer().getId()}) }}">
-                    {{ project.getCustomer().getName() }} - {{ project.getCustomer().getNickname() }}
-                </a>
+            <h5>Customer: {{ project.getCustomer().getName() }}
             </h5>
 
             <h5>Description: {{ project.getShortDescription() }}</h5>
@@ -43,13 +40,6 @@
         </div>
         <div class="panel-body">
 
-            <div class="create-div">
-                <a class="btn btn-md btn-info"
-                   href="{{ app.urlFor('Projects-Product-Create',{projectId:project.getId()}) }}">
-                    Add Product
-                </a>
-            </div>
-
             <br>
 
             <table class="table" id="table">
@@ -59,7 +49,6 @@
                     <th>Value</th>
                     <th>Estimated Hours</th>
                     <th>Is it Paid?</th>
-                    <th>Options</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -73,10 +62,6 @@
                         <td>$ {{ obj.getValue()|number_format(2, '.', ',') }}</td>
                         <td>{{ obj.getEstimatedhours()|number_format(0, '.', ',') }}</td>
                         <td>{% if obj.getPaid() %}Yes{% else %}No{% endif %}</td>
-                        <td>
-                            <a class="btn btn-info" href="{{ app.urlFor('Projects-Product-Edit', {'projectId':project.getId(),'id':obj.getId()}) }}">Edit</a>
-                            <a class="btn btn-danger" href="{{ app.urlFor('Projects-Product-Delete', {'projectId':project.getId(),'id':obj.getId()}) }}">Delete</a>
-                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>

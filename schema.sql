@@ -29,8 +29,11 @@ CREATE TABLE `pm_customer` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `phone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `state` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_F84CB318A76ED395` (`user_id`),
+  CONSTRAINT `FK_F84CB318A76ED395` FOREIGN KEY (`user_id`) REFERENCES `sio_user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +42,7 @@ CREATE TABLE `pm_customer` (
 
 LOCK TABLES `pm_customer` WRITE;
 /*!40000 ALTER TABLE `pm_customer` DISABLE KEYS */;
-INSERT INTO `pm_customer` VALUES (2,'Iago Oliveira','Iago','silva.io@outlook.com','000000','New York'),(4,'Drmjg','drmjg','drmjg@livecoding.tv','000000','FL');
+INSERT INTO `pm_customer` VALUES (2,'Iago Oliveira','Iago','silva.io@outlook.com','000000','New York',NULL);
 /*!40000 ALTER TABLE `pm_customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,10 +60,11 @@ CREATE TABLE `pm_product` (
   `value` double NOT NULL,
   `estimatedHours` int(11) NOT NULL,
   `project_id` int(11) DEFAULT NULL,
+  `paid` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_7ACFB1A4166D1F9C` (`project_id`),
   CONSTRAINT `FK_7ACFB1A4166D1F9C` FOREIGN KEY (`project_id`) REFERENCES `pm_project` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +73,7 @@ CREATE TABLE `pm_product` (
 
 LOCK TABLES `pm_product` WRITE;
 /*!40000 ALTER TABLE `pm_product` DISABLE KEYS */;
-INSERT INTO `pm_product` VALUES (1,'Projects Module','System module for managing projects and products.',600,6,3),(2,'User Report','User report module, with user statistics.',100.24,2,3);
+INSERT INTO `pm_product` VALUES (3,'GrÃ¡ficos de AvaliaÃ§Ã£o','GrÃ¡ficos com os dados do form de avaliaÃ§Ã£o de cada unidade',150,3,6,0),(4,'CMS Site','CMS com contato e unidades.',300,10,6,1),(5,'Kozan Reservas','Sistema de login para cada gerente com reservas do dia e histÃ³rico de reservas.',300,10,6,1),(6,'CMS Site','CMS do site da GranvitÃ³ria',400,8,7,1),(7,'IntegraÃ§Ã£o API','IntegraÃ§Ã£o com a API do sistema de gerenciamento de imÃ³veis',600,12,7,1),(8,'Users Module','User management module',0,1,8,1),(9,'Customers Module','Customers module',0,1,8,1),(10,'Projects Module','Projects module with projects and products.',0,2,8,1),(11,'Reports Module','Module with graphs and other reports',0,3,8,0),(12,'Documentation','Project documentation.',0,1,8,1),(13,'Documentation','Project documentation.',0,1,8,1);
 /*!40000 ALTER TABLE `pm_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,7 +93,7 @@ CREATE TABLE `pm_project` (
   PRIMARY KEY (`id`),
   KEY `IDX_863665E79395C3F3` (`customer_id`),
   CONSTRAINT `FK_863665E79395C3F3` FOREIGN KEY (`customer_id`) REFERENCES `pm_customer` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +102,7 @@ CREATE TABLE `pm_project` (
 
 LOCK TABLES `pm_project` WRITE;
 /*!40000 ALTER TABLE `pm_project` DISABLE KEYS */;
-INSERT INTO `pm_project` VALUES (3,'ProjectManager Github','My own project management system, open source.','2016-05-01',2);
+INSERT INTO `pm_project` VALUES (8,'Project Manager','Open Source project management system.','2016-05-02',2);
 /*!40000 ALTER TABLE `pm_project` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +118,7 @@ CREATE TABLE `sio_role` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `value` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,7 +127,7 @@ CREATE TABLE `sio_role` (
 
 LOCK TABLES `sio_role` WRITE;
 /*!40000 ALTER TABLE `sio_role` DISABLE KEYS */;
-INSERT INTO `sio_role` VALUES (1,'Administrador','ADMIN');
+INSERT INTO `sio_role` VALUES (1,'Administrador','ADMIN'),(2,'Customer','CUSTOMER');
 /*!40000 ALTER TABLE `sio_role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,7 +146,7 @@ CREATE TABLE `sio_user` (
   `last_login` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_B6E5ACECF85E0677` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +155,7 @@ CREATE TABLE `sio_user` (
 
 LOCK TABLES `sio_user` WRITE;
 /*!40000 ALTER TABLE `sio_user` DISABLE KEYS */;
-INSERT INTO `sio_user` VALUES (1,'admin',sha1('admin'),'A','2016-05-01 23:27:04');
+INSERT INTO `sio_user` VALUES (1,'iago','08b3ee9e6b18a12a2e38b65d7c8561c9337dccee','A','2016-05-03 15:33:02'),(2,'test','a94a8fe5ccb19ba61c4c0873d391e987982fbbd3','X','2016-05-01 23:26:53'),(3,'admin','d033e22ae348aeb5660fc2140aec35850c4da997','A','2016-05-03 17:26:16');
 /*!40000 ALTER TABLE `sio_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,8 +172,8 @@ CREATE TABLE `sio_user_roles` (
   PRIMARY KEY (`user_id`,`role_id`),
   KEY `IDX_C825589DA76ED395` (`user_id`),
   KEY `IDX_C825589DD60322AC` (`role_id`),
-  CONSTRAINT `FK_C825589DD60322AC` FOREIGN KEY (`role_id`) REFERENCES `sio_role` (`id`),
-  CONSTRAINT `FK_C825589DA76ED395` FOREIGN KEY (`user_id`) REFERENCES `sio_user` (`id`)
+  CONSTRAINT `FK_C825589DD60322AC` FOREIGN KEY (`role_id`) REFERENCES `sio_role` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_C825589DA76ED395` FOREIGN KEY (`user_id`) REFERENCES `sio_user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -179,7 +183,7 @@ CREATE TABLE `sio_user_roles` (
 
 LOCK TABLES `sio_user_roles` WRITE;
 /*!40000 ALTER TABLE `sio_user_roles` DISABLE KEYS */;
-INSERT INTO `sio_user_roles` VALUES (1,1);
+INSERT INTO `sio_user_roles` VALUES (1,1),(3,1);
 /*!40000 ALTER TABLE `sio_user_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -192,4 +196,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-02  6:16:47
+-- Dump completed on 2016-05-03 21:35:25

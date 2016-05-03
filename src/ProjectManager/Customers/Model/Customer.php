@@ -4,6 +4,7 @@ namespace ProjectManager\Customers\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use SIOFramework\Acl\Model\SystemUser;
 use SIOFramework\Common\Model\Model;
 
 /**
@@ -54,6 +55,14 @@ class Customer extends Model{
      *      cascade={"remove"})
      */
     private $projects;
+
+    /**
+     * @ORM\OneToOne(targetEntity="SIOFramework\Acl\Model\SystemUser",
+     *     cascade={"remove"})
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id",
+     *     nullable=true)
+     */
+    private $user;
 
     /**
      * Customer constructor.
@@ -128,6 +137,22 @@ class Customer extends Model{
     public function setProjects($projects)
     {
         $this->projects = $projects;
+    }
+
+    /**
+     * @return SystemUser
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed SystemUser
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 
 

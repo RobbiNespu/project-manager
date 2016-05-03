@@ -1,0 +1,67 @@
+{% extends 'default/layout.twig' %}
+
+
+{% block content %}
+
+    <h2>Customer Users</h2>
+
+    <h4>
+        <a href="{{ app.urlFor('AccessController-Customer-login') }}" target="_blank">
+            Customer Login Page
+        </a>
+    </h4>
+
+    <hr>
+
+    <div class="create-div">
+        <a class="btn btn-md btn-info" href="{{ app.urlFor('Customers-User-Create') }}">Add User</a>
+    </div>
+
+    <br>
+
+    <table class="table" id="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Nickname</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in list %}
+
+                {% if obj.getUser() %}
+                    <tr>
+                        <td>{{ obj.getName() }}</td>
+                        <td>{{ obj.getNickname() }}</td>
+                        <td>{{ obj.getUser().getUsername() }}</td>
+                        <td>{{ obj.getEmail() }}</td>
+                        <td>
+                            <a class="btn btn-danger" href="{{ app.urlFor('Customers-User-Delete', {'id':obj.getId()}) }}">Delete</a>
+                        </td>
+                    </tr>
+                {% endif %}
+
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script type="text/javascript">
+        jQuery( document ).ready( function( $ ) {
+            var $table = jQuery( "#table" );
+            $table.DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', {
+                        extend: 'pdfHtml5',
+                        title: 'List of Customers',
+                        text: 'PDF'
+                    }
+                ]
+            } );
+        } );
+    </script>
+
+{% endblock %}

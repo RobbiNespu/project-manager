@@ -27,3 +27,27 @@ hr {
 .graph-col {
     text-align: center;
 }
+
+.dashboard-btn-container {
+    padding: 8px;
+}
+
+.dashboard-btn {
+    border: 1px solid #122b40;
+    background-color: #122b40;
+    border-radius: 10px;
+    padding: 2em 0 ;
+}
+
+.dashboard-btn a {
+    text-decoration: none;
+}
+
+.dashboard-btn a, .dashboard-btn a:hover, .dashboard-btn a:visited {
+    color: #F0F0F0;
+}
+
+.dashboard-btn p {
+    text-align: center;
+    font-size: 2em;
+}

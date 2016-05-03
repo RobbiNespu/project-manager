@@ -16,4 +16,7 @@ return array(
     'Projects' => $base . 'src/ProjectManager/Projects',
     'Reports' => $base . 'src/ProjectManager/Reports',
 
+    // Customer Relationship
+    'Relationship' => $base . 'src/ProjectManager/Relationship',
+
 );

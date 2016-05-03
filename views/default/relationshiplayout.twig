@@ -8,7 +8,7 @@ and open the template in the editor.
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Project Manager</title>
+    <title>Customer</title>
 
     <meta name="description" content="My Project Manager">
     <meta name="author" content="Iago Oliveira da Silva">
@@ -39,13 +39,12 @@ and open the template in the editor.
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ app.urlFor('Dashboard') }}">Project Manager</a>
+                <a class="navbar-brand" href="{{ app.urlFor('Dashboard') }}">Customer</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ app.urlFor('Dashboard') }}">Dashboard</a></li>
-                    <li><a href="{{ app.urlFor('Settings') }}">Settings</a></li>
-                    <li><a href="{{ app.urlFor('AccessController-logout') }}">Logout</a></li>
+                    <li><a href="{{ app.urlFor('Relationship-Dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ app.urlFor('AccessController-Customer-logout') }}">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -56,39 +55,17 @@ and open the template in the editor.
             <div class="col-sm-3 col-md-3">
 
                 <ul class="nav nav-sidebar">
-                    <h5 class="list-group-item list-group-item-menu">Users Module</h5>
-                    <li><a href="{{ app.urlFor('admin-users-list') }}">Users</a></li>
+                    <h5 class="list-group-item list-group-item-menu">Overview</h5>
+                    <li><a href="{{ app.urlFor('Relationship-Dashboard') }}">Dashboard</a></li>
                 </ul>
 
 
                 <ul class="nav nav-sidebar">
-                    <h5 class="list-group-item list-group-item-menu">Customers Module</h5>
-                    <li><a href="{{ app.urlFor('Customers-Customer-List') }}">Customers</a></li>
-                    <li><a href="{{ app.urlFor('Customers-User-List') }}">Customer Users</a></li>
-
                     <h5 class="list-group-item list-group-item-menu">Projects Module</h5>
-                    <li><a href="{{ app.urlFor('Projects-Project-List') }}">Projects</a></li>
-                    <li><a href="{{ app.urlFor('Projects-Products-Overview') }}">Products Overview</a></li>
-                </ul>
-
-                <ul class="nav nav-sidebar">
-                    <h5 class="list-group-item list-group-item-menu">Reports Module</h5>
-                    <li><a href="{{ app.urlFor('Reports-Projects') }}">Project Reports</a></li>
+                    <li><a href="{{ app.urlFor('Relationship-Projects') }}">Projects</a></li>
                 </ul>
             </div>
             <div class="col-sm-9 col-md-9">
-
-                {% if error %}
-                    <p class="alert alert-danger">
-                        Unnable to process your action. Please try again.
-                    </p>
-                {% endif %}
-
-                {% if success %}
-                    <p class="alert alert-success">
-                        Action proccessed.
-                    </p>
-                {% endif %}
 
                 {% block content %}
                 {% endblock %}
