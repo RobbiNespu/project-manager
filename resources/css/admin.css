@@ -23,3 +23,7 @@ hr {
     border-color: #000;
     color: #F0F0F0;
 }
+
+.graph-col {
+    text-align: center;
+}

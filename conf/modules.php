@@ -14,5 +14,6 @@ return array(
     'Settings' => $base . 'src/ProjectManager/Settings',
     'Customers' => $base . 'src/ProjectManager/Customers',
     'Projects' => $base . 'src/ProjectManager/Projects',
+    'Reports' => $base . 'src/ProjectManager/Reports',
 
 );

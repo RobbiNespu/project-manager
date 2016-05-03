@@ -9,6 +9,7 @@
             {% if not first %},{% else %}{% set first = false %}{% endif %}{value: {{ val }}, label: '{{ key }}'}
             {% endfor %}
         ],
-        formatter: function (x) { return x }
+        {% if colors %}colors: {{ colors|raw }},{% endif %}
+        formatter: function (x) { return {% if formatter %}'{{ formatter }}'+{% endif %}x }
     });
 </script>

@@ -22,6 +22,16 @@ class MorrisDonutController extends WidgetController
 
 
     /**
+     * @var string
+     */
+    protected $formatter;
+
+    /**
+     * @var string
+     */
+    protected $colors;
+
+    /**
      * @return array
      */
     public function getGraphData()
@@ -54,11 +64,46 @@ class MorrisDonutController extends WidgetController
         return $this->elementName;
     }
 
+    /**
+     * @return string
+     */
+    public function getFormatter()
+    {
+        return $this->formatter;
+    }
+
+    /**
+     * @param string $formatter
+     */
+    public function setFormatter($formatter)
+    {
+        $this->formatter = $formatter;
+    }
+
+    /**
+     * @return string
+     */
+    public function getColors()
+    {
+        return $this->colors;
+    }
+
+    /**
+     * @param string $colors
+     */
+    public function setColors($colors)
+    {
+        $this->colors = $colors;
+    }
+
+
 
     public function renderWidget()
     {
         $this->data['elementName'] = $this->elementName;
         $this->data['graphData'] = $this->graphData;
+        $this->data['formatter'] = $this->formatter;
+        $this->data['colors'] = $this->colors;
 
         $template = $this->twig->loadTemplate('widgets/morrisdonut.twig');
         return $template->render($this->data);

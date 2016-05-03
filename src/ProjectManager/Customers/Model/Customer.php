@@ -115,7 +115,7 @@ class Customer extends Model{
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getProjects()
     {
