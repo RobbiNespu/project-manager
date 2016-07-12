@@ -30,6 +30,6 @@ class DashboardController extends SecuredController
 
     public function index()
     {
-        $this->render('dashboard/index.twig');
+        $this->render('@Dashboard/index.twig');
     }
 }

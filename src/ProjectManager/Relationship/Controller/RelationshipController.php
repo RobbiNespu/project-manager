@@ -57,14 +57,14 @@ class RelationshipController extends SecuredController
 
     public function dashboard()
     {
-        $this->render('relationship/dashboard.twig',$this->data);
+        $this->render('@Relationship/dashboard.twig',$this->data);
     }
 
     public function listProjects()
     {
         $this->data['list'] = $this->getLoggedCustomer()->getProjects();
 
-        $this->render('relationship/project_list.twig',$this->data);
+        $this->render('@Relationship/project_list.twig',$this->data);
     }
 
     public function listProducts($projectId)
@@ -79,6 +79,6 @@ class RelationshipController extends SecuredController
         $this->data['list'] = $list;
         $this->data['project'] = $project;
 
-        $this->render('relationship/product_list.twig',$this->data);
+        $this->render('@Relationship/product_list.twig',$this->data);
     }
 }

@@ -23,7 +23,7 @@ class CustomerController extends SecuredController
         $list = $dbFactory->selectAll('ProjectManager\Customers\Model\Customer');
         $this->data['list'] = $list;
 
-        $this->render('customers/customer/list.twig',$this->data);
+        $this->render('@Customers/list.twig',$this->data);
     }
 
     public function createCustomer()
@@ -44,7 +44,7 @@ class CustomerController extends SecuredController
 
         $this->data['obj'] = $obj;
 
-        $this->render('customers/customer/edit.twig',$this->data);
+        $this->render('@Customers/edit.twig',$this->data);
     }
 
     public function editCustomer($id)
@@ -69,7 +69,7 @@ class CustomerController extends SecuredController
 
         $this->data['obj'] = $obj;
 
-        $this->render('customers/customer/edit.twig',$this->data);
+        $this->render('@Customers/edit.twig',$this->data);
     }
 
     public function deleteCustomer($id)
@@ -104,7 +104,7 @@ class CustomerController extends SecuredController
         $list = $dbFactory->selectAll('ProjectManager\Customers\Model\Customer');
         $this->data['list'] = $list;
 
-        $this->render('customers/customer/loginlist.twig',$this->data);
+        $this->render('@Customers/loginlist.twig',$this->data);
     }
 
     public function createCustomerUser()
@@ -143,7 +143,7 @@ class CustomerController extends SecuredController
 
         $this->data['customers'] = $customers;
 
-        $this->render('customers/customer/adduser.twig',$this->data);
+        $this->render('@Customers/adduser.twig',$this->data);
     }
 
     public function deleteCustomerUser($id)

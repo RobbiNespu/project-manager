@@ -1,0 +1,35 @@
+{% extends '@Default/layout.twig' %}
+
+
+{% block content %}
+
+    <h2>{% if obj.getId() %}Edit{% else %}Create{% endif %} Project</h2>
+
+    <div>
+        <form method="post" class="form-group">
+
+            <input type="hidden" name="id" value="{{obj.getId()}}" />
+
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value="{{obj.getName()}}" class="form-control"/>
+
+            <label for="shortDescription">Short Description</label>
+            <input type="text" id="shortDescription" name="shortDescription" value="{{obj.getShortDescription()}}" class="form-control"/>
+
+            <label for="startingDate">Starting Date</label>
+            <input type="date" id="startingDate" name="startingDate" value="{{obj.getStartingDate().format('Y-m-d')}}" class="form-control"/>
+
+            <label for="startingDate">Customer</label>
+            <select id="customerId" name="customerId" class="form-control">
+                {% for c in customers %}
+                    <option value="{{ c.getId() }}" {% if c == obj.getCustomer() %}selected{% endif %}>{{ c.getName() }}</option>
+                {% endfor %}
+            </select>
+
+            <br>
+
+            <input type="submit" class="btn btn-success btn-md" value="Save" />
+        </form>
+    </div>
+
+{% endblock %}

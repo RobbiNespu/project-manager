@@ -8,6 +8,9 @@ return array(
     'Acl' => $base . 'src/SIOFramework/Acl',
 
     // Project Manager
+	'Default' => $base . 'src/ProjectManager/Default', // Layout stuff
+	'Widgets' => $base . 'src/ProjectManager/Widgets', // Widget stuff
+	
     'AccessController' => $base . 'src/ProjectManager/AccessController',
     'Dashboard' => $base . 'src/ProjectManager/Dashboard',
     'Users' => $base . 'src/ProjectManager/Users',

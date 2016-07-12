@@ -105,7 +105,7 @@ class MorrisDonutController extends WidgetController
         $this->data['formatter'] = $this->formatter;
         $this->data['colors'] = $this->colors;
 
-        $template = $this->twig->loadTemplate('widgets/morrisdonut.twig');
+        $template = $this->twig->loadTemplate('@Widgets/morrisdonut.twig');
         return $template->render($this->data);
     }
 

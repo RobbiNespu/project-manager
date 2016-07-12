@@ -1,0 +1,113 @@
+{% extends '@Default/layout.twig' %}
+
+{% block content %}
+
+    <h1>Users</h1>
+    <h3>
+        User: {{ systemUser.getUsername() }}
+        <p class="pull-right">
+            <a class="btn btn-md btn-info" href="{{ app.urlFor('admin-users-list') }}">
+                <i class="fa fa-arrow-circle-left"></i>
+                Back
+            </a>
+        </p>
+    </h3>
+
+
+
+    <hr>
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <p>
+                <a class="btn btn-md btn-success" data-toggle="modal" data-target="#addRole">
+                    <i class="fa fa-plus-circle"></i>
+                    Add Permission
+                </a>
+            </p>
+
+            <table id="table" class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Module</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for role in systemUser.getRoles() %}
+                        <tr>
+                            <td>{{ role.getId() }}</td>
+                            <td>{{ role.getName() }}</td>
+                            <td>
+                                <a class="btn btn-sm btn-danger"
+                                        href="{{ app.urlFor('admin-roles-remove',{'userId':systemUser.getId(),'roleId':role.getId()}) }}">Remove</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        jQuery( document ).ready( function( $ ) {
+            var $table = jQuery( "#table" );
+            $table.DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', {
+                        extend: 'pdfHtml5',
+                        title: 'User Permissions "{{ systemUser.getUsername() }}"',
+                        text: 'PDF'
+                    }
+                ]
+            } );
+        } );
+    </script>
+
+
+    <div id="addRole" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Add Permission</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form action="{{ app.urlFor('admin-roles-add') }}" method="post">
+
+                        <h4>Username</h4>
+                        <p>
+                            <b>{{ systemUser.getUsername() }}</b>
+                            <input type="hidden" name="userId" value="{{ systemUser.getId() }}" />
+                        </p>
+
+                        <hr>
+
+                        <h4>Permission</h4>
+                        <p>
+                            <select name="role" class="form-control">
+                                {% for role in systemRoles %}
+                                    <option value="{{ role.getId() }}">{{ role.getName() }}</option>
+                                {% endfor %}
+                            </select>
+                        </p>
+
+                        <br>
+
+                        <p style="text-align: center;">
+                            <input type="submit" class="btn btn-md btn-success" value="Add" />
+                        </p>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+{% endblock %}

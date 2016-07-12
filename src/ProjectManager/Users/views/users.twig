@@ -1,0 +1,115 @@
+{% extends '@Default/layout.twig' %}
+
+{% block content %}
+
+    <h1>Users</h1>
+
+    <hr>
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <p>
+                <a class="btn btn-md btn-success" data-toggle="modal" data-target="#addUser">
+                    <i class="fa fa-plus-circle"></i>
+                    Add User
+                </a>
+            </p>
+
+            <table id="table" class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Status</th>
+                        <th>Last Login</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for user in systemUsers %}
+                        <tr>
+                            <td>{{ user.getId() }}</td>
+                            <td>{{ user.getUsername() }}</td>
+                            <td>{% if user.getStatus() == 'A' %}Active{% else %}Inactive{% endif %}</td>
+                            <td>{{ user.getLastLogin()|date('d/m/Y h:i') }}</td>
+                            <td>
+                                {% if user.getStatus() == 'A' %}
+                                    <a class="btn btn-sm btn-danger"
+                                        href="{{ app.urlFor('admin-users-disable',{'userId':user.getId()}) }}">Deactivate</a>
+                                {% else %}
+                                    <a class="btn btn-sm btn-success"
+                                        href="{{ app.urlFor('admin-users-enable',{'userId':user.getId()}) }}">Activate</a>
+                                {% endif %}
+
+                                <a class="btn btn-sm btn-info"
+                                   href="{{ app.urlFor('admin-users-roles',{'userId':user.getId()}) }}">Permissions</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        jQuery( document ).ready( function( $ ) {
+            var $table = jQuery( "#table" );
+            $table.DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', {
+                        extend: 'pdfHtml5',
+                        title: 'System Users',
+                        text: 'PDF'
+                    }
+                ]
+            } );
+        } );
+    </script>
+
+
+    <div id="addUser" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Add User</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form action="{{ app.urlFor('admin-users-create') }}" method="post">
+
+                        <h4>Username</h4>
+                        <p>
+                            <input type="text" name="username" class="form-control" />
+                        </p>
+
+                        <h4>Password</h4>
+                        <p>
+                            <input type="password" name="password" class="form-control" />
+                        </p>
+
+                        <h4>Status</h4>
+                        <p>
+                            <select name="status" class="form-control">
+                                <option value="A">Active</option>
+                                <option value="X">Inactive</option>
+                            </select>
+                        </p>
+
+                        <br>
+
+                        <p style="text-align: center;">
+                            <input type="submit" class="btn btn-md btn-success" value="Create User" />
+                        </p>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+{% endblock %}

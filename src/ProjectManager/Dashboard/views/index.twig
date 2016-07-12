@@ -1,0 +1,67 @@
+{% extends '@Default/layout.twig' %}
+
+{% block content %}
+
+
+    <h2>Dashboard</h2>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-3 col-sm-6 dashboard-btn-container">
+
+            <div class="dashboard-btn">
+                <a href="{{ app.urlFor('admin-users-list') }}">
+                    <p>
+                        <i class="fa fa-users fa-2x"></i>
+                    </p>
+                    <p>
+                        Users
+                    </p>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="col-md-3 col-sm-6 dashboard-btn-container">
+            <div class="dashboard-btn">
+                <a href="{{ app.urlFor('Customers-Customer-List') }}">
+                    <p>
+                        <i class="fa fa-tags fa-2x"></i>
+                    </p>
+                    <p>
+                        Customers
+                    </p>
+                </a>
+                </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 dashboard-btn-container">
+            <div class="dashboard-btn">
+                <a href="{{ app.urlFor('Projects-Project-List') }}">
+                    <p>
+                        <i class="fa fa-folder fa-2x"></i>
+                    </p>
+                    <p>
+                        Projects
+                    </p>
+                </a>
+                </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 dashboard-btn-container">
+            <div class="dashboard-btn">
+                <a href="{{ app.urlFor('Settings') }}">
+                    <p>
+                        <i class="fa fa-gears fa-2x"></i>
+                    </p>
+                    <p>
+                        Settings
+                    </p>
+                </a>
+                </div>
+        </div>
+    </div>
+
+
+{% endblock %}

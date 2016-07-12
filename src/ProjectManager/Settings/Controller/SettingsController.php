@@ -51,6 +51,6 @@ class SettingsController extends SecuredController
             }
         }
 
-        $this->render('settings/settings.twig', $this->data);
+        $this->render('@Settings/settings.twig', $this->data);
     }
 }

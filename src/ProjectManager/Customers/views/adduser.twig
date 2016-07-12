@@ -1,0 +1,32 @@
+{% extends '@Default/layout.twig' %}
+
+
+{% block content %}
+
+    <h2>Create Customer User</h2>
+
+    <hr>
+
+    <div>
+        <form method="post" class="form-group">
+
+            <label for="name">Customer</label>
+            <select name="customer" id="customer" class="form-control">
+                {% for cust in customers  %}
+                    <option value="{{ cust.getId() }}">{{ cust.getName() }} - {{ cust.getNickname() }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="nickname">Username</label>
+            <input type="text" id="username" name="username" class="form-control"/>
+
+            <label for="nickname">Password</label>
+            <input type="password" id="password" name="password" class="form-control"/>
+
+            <br>
+
+            <input type="submit" class="btn btn-md btn-success" value="Create User" />
+        </form>
+    </div>
+
+{% endblock %}

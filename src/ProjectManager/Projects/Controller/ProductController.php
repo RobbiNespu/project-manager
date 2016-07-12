@@ -39,7 +39,7 @@ class ProductController extends SecuredController
         $this->data['list'] = $list;
         $this->data['project'] = $project;
 
-        $this->render('projects/product/list.twig',$this->data);
+        $this->render('@Projects/product/list.twig',$this->data);
     }
 
     public function createProduct($projectId)
@@ -69,7 +69,7 @@ class ProductController extends SecuredController
         $this->data['obj'] = $obj;
         $this->data['project'] = $project;
 
-        $this->render('projects/product/edit.twig',$this->data);
+        $this->render('@Projects/product/edit.twig',$this->data);
     }
 
     public function editProduct($projectId, $id)
@@ -97,7 +97,7 @@ class ProductController extends SecuredController
         $this->data['project'] = $project;
         $this->data['obj'] = $obj;
 
-        $this->render('projects/product/edit.twig',$this->data);
+        $this->render('@Projects/product/edit.twig',$this->data);
     }
 
     public function deleteProduct($id)
@@ -131,7 +131,7 @@ class ProductController extends SecuredController
         $this->data['products'] = $obj;
 
 
-        $this->render('projects/product/overview.twig',$this->data);
+        $this->render('@Projects/product/overview.twig',$this->data);
     }
 
 }

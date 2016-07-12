@@ -22,7 +22,7 @@ class UsersController extends SecuredController
 
         $this->data['systemUsers'] = $systemUsers;
 
-        $resp = $this->twig->loadTemplate('users/users.twig');
+        $resp = $this->twig->loadTemplate('@Users/users.twig');
         echo $resp->render($this->data);
     }
 
@@ -91,7 +91,7 @@ class UsersController extends SecuredController
         $this->data['systemUser'] = $user;
         $this->data['systemRoles'] = $roles;
 
-        $resp = $this->twig->loadTemplate('users/roles.twig');
+        $resp = $this->twig->loadTemplate('@Users/roles.twig');
         echo $resp->render($this->data);
 
     }

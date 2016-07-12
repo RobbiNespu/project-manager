@@ -113,7 +113,7 @@ class ReportsController extends SecuredController
 
         $this->processWidgets();
 
-        $this->render('reports/project/index.twig',$this->data);
+        $this->render('@Reports/project/index.twig',$this->data);
     }
 
 }

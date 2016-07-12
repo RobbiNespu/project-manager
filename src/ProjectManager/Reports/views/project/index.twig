@@ -1,0 +1,29 @@
+{% extends '@Default/layout.twig' %}
+
+{% block content %}
+
+    <h2>Project Report</h2>
+
+    <hr>
+
+    <div class="col-md-6 col-sm-12 graph-col">
+        <h3>Project of Each Customers</h3>
+        {{ Widgets.ProjectByCustomers|raw }}
+    </div>
+
+    <div class="col-md-6 col-sm-12 graph-col">
+        <h3>Project Products</h3>
+        {{ Widgets.ProjectProducts|raw }}
+    </div>
+
+    <div class="col-md-6 col-sm-12 graph-col">
+        <h3>Project Total Sales</h3>
+        {{ Widgets.ProjectSales|raw }}
+    </div>
+
+    <div class="col-md-6 col-sm-12 graph-col">
+        <h3>Paid Products</h3>
+        {{ Widgets.ProjectPaidTotal|raw }}
+    </div>
+
+{% endblock %}

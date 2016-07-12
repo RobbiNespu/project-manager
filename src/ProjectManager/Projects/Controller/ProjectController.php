@@ -22,7 +22,7 @@ class ProjectController extends SecuredController
         $list = $dbFactory->selectAll('ProjectManager\Projects\Model\Project');
         $this->data['list'] = $list;
 
-        $this->render('projects/project/list.twig',$this->data);
+        $this->render('@Projects/project/list.twig',$this->data);
     }
 
     public function createProject()
@@ -54,7 +54,7 @@ class ProjectController extends SecuredController
 
         $this->data['obj'] = $obj;
 
-        $this->render('projects/project/edit.twig',$this->data);
+        $this->render('@Projects/project/edit.twig',$this->data);
     }
 
     public function editProject($id)
@@ -90,7 +90,7 @@ class ProjectController extends SecuredController
 
         $this->data['obj'] = $obj;
 
-        $this->render('projects/project/edit.twig',$this->data);
+        $this->render('@Projects/project/edit.twig',$this->data);
     }
 
     public function deleteProject($id)
