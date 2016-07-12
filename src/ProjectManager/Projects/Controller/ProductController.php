@@ -100,14 +100,14 @@ class ProductController extends SecuredController
         $this->render('@Projects/product/edit.twig',$this->data);
     }
 
-    public function deleteProduct($id)
+    public function deleteProduct($projectId, $id)
     {
         $dbFactory = new StandardFactory($this->app);
         $obj = $dbFactory->get('ProjectManager\Projects\Model\Product',$id);
 
         if(!($obj instanceof Product))
         {
-            $this->app->redirect($this->app->urlFor('Projects-Products-List').'?error=true');
+            $this->app->redirect($this->app->urlFor('Projects-Products-List',['projectId'=>$projectId]).'?error=true');
             return;
         }
 
@@ -116,11 +116,11 @@ class ProductController extends SecuredController
         }
         catch(\Exception $ex)
         {
-            $this->app->redirect($this->app->urlFor('Projects-Products-List').'?error=true');
+            $this->app->redirect($this->app->urlFor('Projects-Products-List',['projectId'=>$projectId]).'?error=true');
             return;
         }
 
-        $this->app->redirect($this->app->urlFor('Projects-Products-List').'?success=true');
+        $this->app->redirect($this->app->urlFor('Projects-Products-List',['projectId'=>$projectId]).'?success=true');
     }
 
     public function productsOverview()
