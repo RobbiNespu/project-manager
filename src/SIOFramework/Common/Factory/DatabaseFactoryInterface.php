@@ -8,6 +8,15 @@ use Slim\Slim;
 
 interface DatabaseFactoryInterface
 {
+
+	/**
+	 * Constructor to inject the Slim app on the Factory.
+	 * 
+	 * @param Slim $app
+	 */
+	public function __construct(Slim $app);
+	
+	
     /**
      * Gets an Object by $id
      *

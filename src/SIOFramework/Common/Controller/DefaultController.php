@@ -3,6 +3,8 @@
 namespace SIOFramework\Common\Controller;
 
 use Slim\Slim;
+use SIOFramework\Common\Factory\DatabaseFactoryInterface;
+use SIOFramework\Common\Factory\StandardFactory;
 
 
 abstract class DefaultController implements ControllerInterface
@@ -28,6 +30,11 @@ abstract class DefaultController implements ControllerInterface
     protected $language;
 
     /**
+     * @var DatabaseFactoryInterface 
+     */
+    protected $databaseFactory;
+    
+    /**
      * @var array of WidgetInterface
      */
     protected $widgets;
@@ -44,6 +51,8 @@ abstract class DefaultController implements ControllerInterface
 
         $this->widgets = array();
         $this->twig = $this->app->container->get('twig');
+        
+        $this->databaseFactory = new StandardFactory($app);
     }
 
     /**
@@ -110,4 +119,6 @@ abstract class DefaultController implements ControllerInterface
             $this->data['Widgets'][$key] = $val->renderWidget();
         }
     }
+    
+    
 }
