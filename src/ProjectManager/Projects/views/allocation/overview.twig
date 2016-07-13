@@ -1,0 +1,71 @@
+{% extends '@Default/layout.twig' %}
+
+
+{% block content %}
+
+    <h2>Your Allocations</h2>
+
+    <hr>
+
+    <div class="panel panel-info">
+        <div class="panel-body">
+
+            <div class="create-div">
+                <a class="btn btn-md btn-info"
+                   href="{{ app.urlFor('Projects-Allocation-Edit') }}">
+                   <i class="fa fa-plus-circle"></i> Allocate Time
+                </a>
+            </div>
+
+            <br>
+
+            <table class="table" id="table">
+                <thead>
+                <tr>
+                    <th>Project</th>
+                    <th>Product</th>
+                    <th>Date</th>
+                    <th>Hours Worked</th>
+                    <th>Options</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for obj in allocations %}
+                    <tr>
+                        <td>
+                            <a href="{{ app.urlFor('Projects-Products-List',{'projectId':obj.getProduct().getProject().getId()}) }}">
+                                {{ obj.getProduct().getProject().getName() }}
+                            </a>
+                        </td>
+                        <td>{{ obj.getProduct().getName() }}</td>
+                        <td>{{ obj.getDateWorked()|date('m/d/Y') }}</td>
+                        <td>{{ obj.getValue()|number_format(0, '.', ',') }}</td>
+                        <td>
+                            <a class="btn btn-info" href="{{ app.urlFor('Projects-Allocation-Edit', {'allocationId':obj.getId()}) }}">Edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        jQuery( document ).ready( function( $ ) {
+            var $table = jQuery( "#table" );
+            $table.DataTable( {
+                dom: 'Bfrtip',
+                order: [],
+                buttons: [
+                    'copy', 'csv', 'excel', {
+                        extend: 'pdfHtml5',
+                        title: 'Allocations',
+                        text: 'PDF'
+                    }
+                ]
+            } );
+        } );
+    </script>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends '@Default/layout.twig' %}
+
+
+{% block content %}
+
+    <h2>{% if allocation.getId() %}Edit{% else %}New{% endif %} Allocation</h2>
+    
+    <h5>
+        <a class="btn btn-md btn-info" href="{{ app.urlFor('Projects-Allocation-Overview') }}">
+            <i class="fa fa-arrow-circle-left"></i>
+            Back
+        </a>
+    </h5>
+
+    <hr>
+
+
+    <div>
+    	
+    	{% if allocation.getId() %}
+    		<label>Project</label>
+    		<p>{{ allocation.getProduct().getProject().getName() }}</p>
+    	{% else %}
+    		<label>Select the Project:</label>
+	    	<select id="projectSelector" class="form-control">
+	    		<option value=""></option>
+				{% for proj in projectList %}
+					<option value="{{ proj.getId() }}">{{ proj.getName() }}</option>
+				{% endfor %}
+	    	</select>
+    	{% endif %}
+    	
+    
+    
+        <form method="post" class="form-group">
+
+			<label for="productId">Product</label>
+			{% if allocation.getId() %}
+				<input type="hidden" name="productId" value="{{ allocation.getProduct().getId() }}" />
+				<p>{{ allocation.getProduct().getName() }}</p>
+			{% else %}
+				<select id="productSelector" name="productId" class="form-control">
+					<option>Select a Project First</option>
+				</select>
+			{% endif %}
+
+            <label for="dateWorked">Date</label>
+            <input type="date" id="dateWorked" name="dateWorked" value="{{allocation.getDateWorked()|date('m/d/Y')}}" class="form-control"/>
+
+            <label for="description">Description</label>
+            <input type="text" id="description" name="description" value="{{allocation.getDescription()}}" class="form-control"/>
+
+            <label for="value">Hours Worked</label>
+            <input type="number" id="value" name="value" value="{{allocation.getValue()}}" class="form-control"/>
+
+            <br>
+
+            <input type="submit" value="Save" class="btn btn-success btn-md"/>
+        </form>
+    </div>
+    
+    <script type="text/javascript">
+		function loadProducts(data)
+		{
+			var products = JSON.parse(data);
+			
+			var productSelector = $('#productSelector');
+
+			productSelector.find('option').remove();
+			products.forEach(function(elm){
+				productSelector.append('<option value="'+elm.id+'">'+elm.name+'</option>');
+			});
+		}
+    
+		$('#projectSelector').change( function() {
+			var requestUrl = '{{ app.urlFor('Projects-Products-Ajax-List') }}'+'/'+this.value;
+
+			$.ajax({
+				url: requestUrl,
+				method: 'GET',
+				success: loadProducts
+			});
+		});
+    </script>
+
+{% endblock %}

@@ -4,6 +4,7 @@ namespace ProjectManager\Projects\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use SIOFramework\Common\Model\Model;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class Product
@@ -51,8 +52,32 @@ class Product extends Model{
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
     private $project;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="ProjectManager\Projects\Model\Allocation",
+     *      mappedBy="product",
+     *      cascade={"persist","remove"})
+     */
+    private $allocations;
 
 
+    public function __construct()
+    {
+    	$this->allocations = new ArrayCollection();
+    }
+    
+    public function getTotalHoursWorked()
+    {
+    	$total = 0;
+    	foreach($this->allocations as $allocation)
+    	{
+    		$total += $allocation->getValue();
+    	}
+    	
+    	return $total;
+    }
+    
+    
     // Getters and Setters
     public function getId()
     {
@@ -127,7 +152,25 @@ class Product extends Model{
     {
         $this->project = $project;
     }
+    
+    /**
+     * @return ArrayCollection
+     */
+	public function getAllocations() {
+		return $this->allocations;
+	}
+	
+	/**
+	 * @param ArrayCollection $allocations
+	 */
+	public function setAllocations(ArrayCollection $allocations) {
+		$this->allocations = $allocations;
+		return $this;
+	}
+	
 
+    
+    
 
 
 }

@@ -133,5 +133,35 @@ class ProductController extends SecuredController
 
         $this->render('@Projects/product/overview.twig',$this->data);
     }
+    
+    public function selectProductsFromProject($projectId)
+    {
+    	$products = $this->databaseFactory->selectAll('ProjectManager\Projects\Model\Product',
+    			['project'=>$projectId],
+    			['name'=>'ASC']
+    	);
+    	
+    	if(count($products) <= 0)
+    	{
+    		$this->app->response->status(404);
+    		echo json_encode(NULL);
+    		return;
+    	}
+    	
+    	$productData = [];
+    	
+    	foreach($products as $product)
+    	{
+    		/**
+    		 * @var Product $product
+    		 */
+    		$productData[] = [
+    			'id' => $product->getId(),
+    			'name' => $product->getName(),
+    		];
+    	}
+    	
+    	echo json_encode($productData, JSON_OBJECT_AS_ARRAY);
+    }
 
 }

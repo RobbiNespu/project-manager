@@ -95,6 +95,16 @@
                     </div>
                     <div class="modal-body">
 
+						{% if obj.getPaid() %}
+							<p class="alert alert-success">
+								Paid
+							</p>
+						{% else %}
+							<p class="alert alert-danger">
+								Not Paid
+							</p>
+						{% endif %}
+
                         <div class="row" style="padding:10px;">
                             <div class="col-md-6 col-sm-6">
                                 <h4>Name</h4>
@@ -119,19 +129,23 @@
                                 <p>{{ obj.getDescription() }}</p>
                             </div>
 
-
                             <div class="col-md-12 col-sm-12" style="text-align: center;">
                                 <hr>
-                                <h3>Value: $ {{ obj.getValue() }}</h3>
-                                {% if obj.getPaid() %}
-                                    <p class="alert alert-success">
-                                        Paid
-                                    </p>
-                                {% else %}
-                                    <p class="alert alert-danger">
-                                        Not Paid
-                                    </p>
-                                {% endif %}
+                                
+                                <h4>Total Hours Worked: {{ obj.getTotalHoursWorked() }} hours</h4>
+                                
+                                <!-- TODO: Refer to the Project speficic allocations  
+                                <p>
+                                	<a href="#">More Details</a>
+                                </p>
+                                
+                                 -->
+                                
+                                <hr>
+                                
+                                <h4>Value: $ {{ obj.getValue() }}</h4>
+                                
+                                <br>
                             </div>
                         </div>
 

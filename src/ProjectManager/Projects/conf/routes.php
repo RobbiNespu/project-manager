@@ -33,6 +33,8 @@ $app->group('/Projects', function() use ($app){
 		
 	});
 	
+	
+	
 	$app->group('/Products/', function() use ($app){
 	
 		$app->get(':projectId',function($projectId) use ($app){
@@ -65,8 +67,33 @@ $app->group('/Projects', function() use ($app){
 		
 		})->via('GET','POST')->name('Projects-Products-Overview');
 		
+		
+		$app->get('Ajax/List(/:projectId)',function($projectId=NULL) use ($app){
+		
+			(new ProjectManager\Projects\Controller\ProductController($app))->selectProductsFromProject($projectId);
+		
+		})->name('Projects-Products-Ajax-List');
+		
 	});
 	
+	
+	
+	$app->group('/Allocation/', function() use ($app){
+		
+		$app->get('Overview/',function() use ($app){
+		
+			(new ProjectManager\Projects\Controller\AllocationController($app))->allocationOverview();
+		
+		})->via('GET','POST')->name('Projects-Allocation-Overview');
+		
+		$app->get('edit/(:allocationId)',function($allocationId=NULL) use ($app){
+		
+			(new ProjectManager\Projects\Controller\AllocationController($app))->editAllocation($allocationId);
+		
+		})->via('GET','POST')->name('Projects-Allocation-Edit');
+		
+	});
+
 });
 
 
