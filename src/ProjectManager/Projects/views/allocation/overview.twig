@@ -39,7 +39,7 @@
                         </td>
                         <td>{{ obj.getProduct().getName() }}</td>
                         <td>{{ obj.getDateWorked()|date('m/d/Y') }}</td>
-                        <td>{{ obj.getValue()|number_format(0, '.', ',') }}</td>
+                        <td>{{ obj.getValue()|number_format(1, '.', ',') }}</td>
                         <td>
                             <a class="btn btn-info" href="{{ app.urlFor('Projects-Allocation-Edit', {'allocationId':obj.getId()}) }}">Edit</a>
                         </td>
