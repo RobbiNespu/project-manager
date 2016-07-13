@@ -9,6 +9,7 @@ Open Source Project Management System. I'll use this project to keep my freelanc
 1. Composer
 2. PHP
 3. Apache
+4. Database (Preferred MySQL)
 
 ### Instructions
 
