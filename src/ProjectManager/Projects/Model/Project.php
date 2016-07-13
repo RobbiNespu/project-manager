@@ -89,7 +89,7 @@ class Project extends Model{
     }
     public function setStartingDate($startingDate)
     {
-        $startingDate = \DateTime::createFromFormat('Y-m-d', $startingDate);
+        $startingDate = \DateTime::createFromFormat('m/d/Y', $startingDate);
 
         $this->startingDate = $startingDate;
     }
