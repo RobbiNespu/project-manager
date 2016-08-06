@@ -82,12 +82,17 @@ hr {
 	border-bottom: 2px solid #E6AE55;
 }
 
+@media(min-width:768px) {
+	.navbar-default {
+		height: 100%;
+	}	
+}
+
 .navbar-brand {
 	color: #f0f0f0 !important;
 }
 
 .navbar-default {
-	height: 100%;
 	background-color: #4D8196;
 }
 
