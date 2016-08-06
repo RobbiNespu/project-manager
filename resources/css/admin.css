@@ -1,10 +1,35 @@
 /*
  * Base structure
  */
+@font-face {
+    font-family: Oxygen;
+    src: url(fonts/Oxygen-Light.ttf);
+}
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-    padding-top: 60px;
+	padding-top: 0px;
+	overflow: auto;
+    font-family: 'Oxygen', sans-serif;
+}
+
+.wrapper {
+    width: 100%;
+}
+
+.page-wrapper {
+	padding: 0 15px;
+	padding-top: 55px;
+    min-height: 568px;
+    background-color: #fff;
+}
+
+@media(min-width:768px) {
+    .page-wrapper {
+        position: inherit;
+        margin: 5px 0 0 230px;
+        padding: 0 30px;
+    }
 }
 
 hr {
@@ -12,16 +37,6 @@ hr {
     height: 1px;
     background: #333;
     background-image: linear-gradient(to right, #ccc, #333, #ccc);
-}
-
-.nav-sidebar {
-    margin-top: 5px;
-}
-
-.list-group-item-menu {
-    background-color: #122b40;
-    border-color: #000;
-    color: #F0F0F0;
 }
 
 .graph-col {
@@ -50,4 +65,98 @@ hr {
 .dashboard-btn p {
     text-align: center;
     font-size: 2em;
+}
+
+.right-padding-5 {
+	padding-right: 5px;
+}
+
+/* ====== Navigation CSS ====== */
+.navbar-fixed-top{
+	background-color: #030000 !important;
+	border-bottom: 2px solid #E6AE55 !important;
+}
+
+.navbar-header {
+	width: 100%;
+	border-bottom: 2px solid #E6AE55;
+}
+
+.navbar-brand {
+	color: #f0f0f0 !important;
+}
+
+.navbar-default {
+	height: 100%;
+	background-color: #4D8196;
+}
+
+.sidebar .sidebar-nav.navbar-collapse {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.sidebar ul li {
+	background-color: #4D8196;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.sidebar ul li a {
+	color: #fff;
+}
+
+.sidebar ul li a.active {
+    background-color: #7DB1C6;
+}
+
+.sidebar ul li a:hover {
+    background-color: #3D7186;
+}
+
+.sidebar .arrow {
+    float: right;
+}
+
+.sidebar .fa.arrow:before {
+    content: "\f104";
+}
+
+.sidebar .active>a>.fa.arrow:before {
+    content: "\f107";
+}
+
+.sidebar .nav-second-level li,
+.sidebar .nav-third-level li {
+    border-bottom: 0!important;
+}
+
+.sidebar .nav-second-level li a {
+    padding-left: 37px;
+}
+
+.sidebar .nav-third-level li a {
+    padding-left: 52px;
+}
+
+.sidebar .nav-second-level li,
+.sidebar .nav-third-level li {
+    border-bottom: 0!important;
+}
+
+.sidebar .nav-second-level li a {
+    padding-left: 37px;
+}
+
+@media(min-width:768px) {
+    .navbar {
+    	width: 250px;
+    }
+    
+    .sidebar {
+        z-index: 1;
+        position: absolute;
+        overflow-y: auto;
+        width: 250px;
+        margin-top: 51px;
+    }
 }

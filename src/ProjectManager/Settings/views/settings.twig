@@ -6,20 +6,8 @@
 
     <hr>
 
-    {% if error %}
-        <div class="alert alert-danger">
-            {{ error }}
-        </div>
-    {% endif %}
-
-    {% if success %}
-        <div class="alert alert-success">
-            {{ success }}
-        </div>
-    {% endif %}
-
     <div class="col-md-6 col-sm-12">
-
+		
         <h4>Password Changing</h4>
         <br>
 
@@ -38,7 +26,7 @@
             <label for="newpasswordconf">Repeat New Password</label>
             <input id="newpasswordconf" type="password" name="newpasswordconf" value="{{ newpasswordconf }}" class="form-control" placeholder="" required>
 
-            <hr>
+            <br>
 
             <p style="text-align: center;">
                 <button class="btn btn-md btn-warning" type="submit">Change Password</button>

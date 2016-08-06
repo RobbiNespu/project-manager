@@ -3,6 +3,10 @@
     Author     : silva i.o.
 */
 
+@font-face {
+    font-family: Oxygen;
+    src: url(fonts/Oxygen-Light.ttf);
+}
 /*
  * Globals
  */
@@ -10,33 +14,51 @@ html, body {
     border: 0px;
     margin: auto;
     padding: 0px;
-    background-color: #f0f0f0;
+    background-color: #5D91A6;
     color: #555;
     font-family: 'Oxygen', sans-serif;
     text-align: center;
 }
 
 .login-box {
-    margin-top: 5%;
+    margin-top: 10%;
     margin-left: auto ;
     margin-right: auto ;
-    padding: 40px;
-    border: 1px solid #555;
-    border-radius: 10px;
     text-align: center;
-    width: 400px;
+    width: 420px;
     background-color: #fff;
+    
+    /*-webkit-box-shadow: -3px 3px 7px 1px rgba(168,168,168,0.72);
+	-moz-box-shadow: -3px 3px 7px 1px rgba(168,168,168,0.72);
+	box-shadow: -3px 3px 7px 1px rgba(168,168,168,0.72);*/
+}
+
+.login-title {
+	color: #f3f3f3;
+	background-color: #030000;
+	border-bottom: 3px solid #E6AE55;
 }
 
 .login-box h2 {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #555;
+	font-size: 2.05em;
+	padding: 20px 0px;
+	padding-bottom: 10px;
 }
 
 .login-container {
-    padding-top: 12px;
+    padding: 30px 45px;
 }
 
-.login-container p {
-    padding-bottom: 8px;
+.btn-login{
+	background-color: #2E5C80;
+	color: #f3f3f3;
+}
+
+.btn-login:hover {
+	color: #f3f3f3;
+	background-color: #4E6D80;
+}
+
+.right-padding-5 {
+	padding-right: 5px;
 }
