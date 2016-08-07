@@ -3,21 +3,17 @@
 
 {% block content %}
 
-    <h2>Your Allocations</h2>
+    <h2><i class="fa fa-cubes right-padding-5"></i> Allocations</h2>
 
-    <hr>
-
-    <div class="panel panel-info">
+    <div class="panel panel-white panel-animated">
         <div class="panel-body">
 
-            <div class="create-div">
+            <div class="panel-options">
                 <a class="btn btn-md btn-info"
                    href="{{ app.urlFor('Projects-Allocation-Edit') }}">
                    <i class="fa fa-plus-circle"></i> Allocate Time
                 </a>
             </div>
-
-            <br>
 
             <table class="table" id="table">
                 <thead>

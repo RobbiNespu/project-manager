@@ -3,47 +3,54 @@
 
 {% block content %}
 
-    <h2>{% if obj.getId() %}Edit{% else %}Create{% endif %} Product</h2>
-    <h5>Project: {{ project.getName() }}</h5>
+    <h2>
+    	<i class="fa fa-cubes right-padding-5"></i>
+    	{% if obj.getId() %}Edit{% else %}Create{% endif %} Product
+    </h2>
+    
+    <div class="panel panel-white">
+    	<div class="panel-heading">
+	    	<h4>Project: {{ project.getName() }}</h5>
+		</div>
+		
+		<div class="panel-body">
+		
+			<div class="panel-options">
+		        <a class="btn btn-md btn-default" href="{{ app.urlFor('Projects-Products-List',{projectId:project.getId()}) }}">
+		            <i class="fa fa-arrow-circle-left"></i>
+		            Back
+		        </a>
+		    </div>
+		
+			<form method="post" class="form-group">
 
-    <h5>
-        <a class="btn btn-md btn-info" href="{{ app.urlFor('Projects-Products-List',{projectId:project.getId()}) }}">
-            <i class="fa fa-arrow-circle-left"></i>
-            Back
-        </a>
-    </h5>
-
-    <hr>
-
-
-    <div>
-        <form method="post" class="form-group">
-
-            <input type="hidden" name="id" value="{{obj.getId()}}" />
-            <input type="hidden" name="projectId" value="{{project.getId()}}" />
-
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" value="{{obj.getName()}}" class="form-control"/>
-
-            <label for="description">Description</label>
-            <input type="text" id="description" name="description" value="{{obj.getDescription()}}" class="form-control"/>
-
-            <label for="value">Value $</label>
-            <input type="number" id="value" name="value" value="{{obj.getValue()}}" class="form-control"/>
-
-            <label for="estimatedHours">Estimated Hours</label>
-            <input type="number" id="estimatedHours" name="estimatedHours" value="{{obj.getEstimatedHours()}}" class="form-control"/>
-
-            <label for="estimatedHours">Is it Paid?</label>
-            <select id="paid" name="paid" class="form-control">
-                <option value="0" {% if not obj.getPaid() %}selected{% endif %}>No</option>
-                <option value="1" {% if obj.getPaid() %}selected{% endif %}>Yes</option>
-            </select>
-
-            <br>
-
-            <input type="submit" value="Save" class="btn btn-success btn-md"/>
-        </form>
+	            <input type="hidden" name="id" value="{{obj.getId()}}" />
+	            <input type="hidden" name="projectId" value="{{project.getId()}}" />
+	
+	            <label for="name">Name</label>
+	            <input type="text" id="name" name="name" value="{{obj.getName()}}" class="form-control"/>
+	
+	            <label for="description">Description</label>
+	            <input type="text" id="description" name="description" value="{{obj.getDescription()}}" class="form-control"/>
+	
+	            <label for="value">Value $</label>
+	            <input type="number" id="value" name="value" value="{{obj.getValue()}}" class="form-control"/>
+	
+	            <label for="estimatedHours">Estimated Hours</label>
+	            <input type="number" id="estimatedHours" name="estimatedHours" value="{{obj.getEstimatedHours()}}" class="form-control"/>
+	
+	            <label for="estimatedHours">Is it Paid?</label>
+	            <select id="paid" name="paid" class="form-control">
+	                <option value="0" {% if not obj.getPaid() %}selected{% endif %}>No</option>
+	                <option value="1" {% if obj.getPaid() %}selected{% endif %}>Yes</option>
+	            </select>
+	
+	            <br>
+	
+	            <input type="submit" value="Save" class="btn btn-success btn-md"/>
+	        </form>
+		</div>
+        
     </div>
 
 {% endblock %}

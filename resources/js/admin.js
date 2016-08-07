@@ -41,4 +41,45 @@ $(function() {
             break;
         }
     }
+    
+  //Animate tiles
+    var animationTime = 300; 
+
+    var tiles = document.querySelectorAll('.tile');
+    var lastTile = 0;
+    var start = 1;
+
+    for(var i=0; i<tiles.length; i++)
+    {
+    	$(tiles[i]).hide();
+    	
+    	setTimeout(function(){
+    		var current = $(tiles[lastTile++]);
+    		current.show();
+    		current.css('animation','appear-left-short 0.6s');
+    	}, start);
+    	
+    	start += animationTime;
+    }
+
+    // Animate panels later
+    var panels = document.querySelectorAll('.panel-animated');
+    var lastPanel = 0;
+    var panelTime = 100;
+    
+    for(var i=0; i<panels.length; i++)
+    {
+    	$(panels[i]).css('opacity','0');
+    	
+    	setTimeout(function(){
+    		var current = $(panels[lastPanel++]);
+    		current.css('animation','appear-bottom-short 0.8s');
+    		current.css('opacity','1.0');
+    	}, start);
+    	
+    	start += animationTime + panelTime;
+    }
+    
 });
+
+

@@ -1,32 +1,32 @@
-{% extends '@Default/layout.twig' %}
+{% extends '@Default/layout.twig' %} {% block content %}
+
+<h2>
+	<i class="fa fa-folder-open right-padding-5"></i> Create Customer User
+</h2>
 
 
-{% block content %}
+<div class="panel panel-white">
+	<div class="panel-body">
 
-    <h2>Create Customer User</h2>
+		<div class="panel-options">
+			<a class="btn btn-md btn-default"
+				href="{{ app.urlFor('Customers-User-List') }}"> <i
+				class="fa fa-arrow-circle-left"></i> Back
+			</a>
+		</div>
 
-    <hr>
+		<form method="post" class="form-group">
 
-    <div>
-        <form method="post" class="form-group">
-
-            <label for="name">Customer</label>
-            <select name="customer" id="customer" class="form-control">
-                {% for cust in customers  %}
-                    <option value="{{ cust.getId() }}">{{ cust.getName() }} - {{ cust.getNickname() }}</option>
-                {% endfor %}
-            </select>
-
-            <label for="nickname">Username</label>
-            <input type="text" id="username" name="username" class="form-control"/>
-
-            <label for="nickname">Password</label>
-            <input type="password" id="password" name="password" class="form-control"/>
-
-            <br>
-
-            <input type="submit" class="btn btn-md btn-success" value="Create User" />
-        </form>
-    </div>
-
+			<label for="name">Customer</label> <select name="customer"
+				id="customer" class="form-control"> {% for cust in customers %}
+				<option value="{{ cust.getId() }}">{{ cust.getName() }} - {{
+					cust.getNickname() }}</option> {% endfor %}
+			</select> <label for="nickname">Username</label> <input type="text"
+				id="username" name="username" class="form-control" /> <label
+				for="nickname">Password</label> <input type="password" id="password"
+				name="password" class="form-control" /> <br> <input type="submit"
+				class="btn btn-md btn-success" value="Create User" />
+		</form>
+	</div>
+</div>
 {% endblock %}

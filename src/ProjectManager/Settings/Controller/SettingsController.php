@@ -16,17 +16,14 @@ class SettingsController extends SecuredController
 
     public function changePassword()
     {
-        $app = $this->app;
-
-        if($app->request->isPost())
+        $user = $this->databaseFactory->get('Acl:SystemUser',$this->getLoggedUserId());
+        
+        if($this->app->request->isPost())
         {
             $params = $this->data;
 
             try
             {
-                $userFactory = new StandardFactory($this->app);
-                $user = $userFactory->get('SIOFramework\Acl\Model\SystemUser',$this->getLoggedUserId());
-
                 if(!is_object($user) ||
                     $user->getPassword() != sha1($params['oldpassword']) ||
                     $params['newpassword']!=$params['newpasswordconf'])
@@ -40,7 +37,7 @@ class SettingsController extends SecuredController
                 }
 
                 $user->setPassword($params['newpassword']);
-                $userFactory->persist($user);
+                $this->databaseFactory->persist($user);
 
                 $this->data['success'] = 'Password changed.';
 
@@ -50,6 +47,8 @@ class SettingsController extends SecuredController
                 $this->data['error'] = 'Error changing password. '.$ex->getMessage();
             }
         }
+        
+        $this->data['user'] = $user;
 
         $this->render('@Settings/settings.twig', $this->data);
     }

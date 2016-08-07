@@ -2,20 +2,17 @@
 
 {% block content %}
 
-    <h1>Users</h1>
+    <h2><i class="fa fa-users right-padding-5"></i> User List</h2>
 
-    <hr>
+    <div class="panel panel-white panel-animated">
 
-    <div class="row">
-
-        <div class="col-md-12">
-
-            <p>
-                <a class="btn btn-md btn-success" data-toggle="modal" data-target="#addUser">
+		<div class="panel-body">
+            <div class="panel-options">
+                <a class="btn btn-md btn-info" data-toggle="modal" data-target="#addUser">
                     <i class="fa fa-plus-circle"></i>
                     Add User
                 </a>
-            </p>
+            </div>
 
             <table id="table" class="table table-responsive">
                 <thead>

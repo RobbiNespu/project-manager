@@ -3,50 +3,58 @@
 
 {% block content %}
 
-    <h2>Details of {{ project.getName() }}</h2>
-
-    <h5>
-        <a class="btn btn-md btn-info" href="{{ app.urlFor('Projects-Project-List') }}">
-            <i class="fa fa-arrow-circle-left"></i>
-            Back
-        </a>
-    </h5>
-
-    <hr>
+    <h2>
+    	<i class="fa fa-cubes right-padding-5"></i> Details of {{ project.getName() }}
+    </h2>
 
 
-    <div class="panel panel-info">
+    <div class="panel panel-white panel-animated">
         <div class="panel-heading">
             <h3 class="panel-title">Project Details</h3>
         </div>
         <div class="panel-body">
 
-            <h5>Customer:
-                <a href="{{ app.urlFor('Customers-Customer-Edit',{id:project.getCustomer().getId()}) }}">
-                    {{ project.getCustomer().getName() }} - {{ project.getCustomer().getNickname() }}
-                </a>
-            </h5>
-
-            <h5>Description: {{ project.getShortDescription() }}</h5>
-
-            <br>
-
-            <h4>Total Amount: ${{ project.getTotalCost()|number_format(2, '.', ',') }}</h4>
-            <h4>Total Paid: ${{ project.getTotalPaid()|number_format(2, '.', ',') }}</h4>
+			<div class="panel-options">
+		        <a class="btn btn-md btn-default" href="{{ app.urlFor('Projects-Project-List') }}">
+		            <i class="fa fa-arrow-circle-left"></i>
+		            Back
+		        </a>
+		    </div>
+			
+			<div class="col-sm-12 col-md-6">
+				<label>Customer</label>
+	            <p>
+	            	<a href="{{ app.urlFor('Customers-Customer-Edit',{id:project.getCustomer().getId()}) }}">
+	                    {{ project.getCustomer().getName() }} - {{ project.getCustomer().getNickname() }}
+	                </a>
+	            </p>
+	
+	            <label>Description</label>
+	            <p>{{ project.getShortDescription() }}</p>	
+			</div>
+            
+			<div class="col-sm-12 col-md-6">
+	            <label>Total Amount</label> 
+	            <p>${{ project.getTotalCost()|number_format(2, '.', ',') }}</p>
+	            
+	            
+	            <label>Total Paid</label>
+	            <p>${{ project.getTotalPaid()|number_format(2, '.', ',') }}</p>
+           	</div>
         </div>
     </div>
 
 
-    <div class="panel panel-info">
+    <div class="panel panel-white panel-animated">
         <div class="panel-heading">
             <h3 class="panel-title">Products</h3>
         </div>
         <div class="panel-body">
 
-            <div class="create-div">
+            <div class="panel-options">
                 <a class="btn btn-md btn-info"
                    href="{{ app.urlFor('Projects-Product-Create',{projectId:project.getId()}) }}">
-                    Add Product
+                    <i class="fa fa-plus-circle right-padding-5"></i> Add Product
                 </a>
             </div>
 

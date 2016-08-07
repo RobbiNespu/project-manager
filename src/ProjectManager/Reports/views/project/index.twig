@@ -1,29 +1,36 @@
-{% extends '@Default/layout.twig' %}
+{% extends '@Default/layout.twig' %} {% block content %}
 
-{% block content %}
-
-    <h2>Project Report</h2>
-
-    <hr>
-
-    <div class="col-md-6 col-sm-12 graph-col">
-        <h3>Project of Each Customers</h3>
-        {{ Widgets.ProjectByCustomers|raw }}
-    </div>
-
-    <div class="col-md-6 col-sm-12 graph-col">
-        <h3>Project Products</h3>
-        {{ Widgets.ProjectProducts|raw }}
-    </div>
-
-    <div class="col-md-6 col-sm-12 graph-col">
-        <h3>Project Total Sales</h3>
-        {{ Widgets.ProjectSales|raw }}
-    </div>
-
-    <div class="col-md-6 col-sm-12 graph-col">
-        <h3>Paid Products</h3>
-        {{ Widgets.ProjectPaidTotal|raw }}
-    </div>
+<h2><i class="fa fa-cubes right-padding-5"></i> Project Report</h2>
+<div class="row">
+	<div class="col-md-6 col-sm-12 graph-col">
+	
+		<div class="tile">
+			<h3>Project of Each Customers</h3>
+			{{ Widgets.ProjectByCustomers|raw }}
+		</div>
+	
+	</div>
+	
+	<div class="col-md-6 col-sm-12 graph-col">
+		<div class="tile">
+			<h3>Project Products</h3>
+			{{ Widgets.ProjectProducts|raw }}
+		</div>
+	</div>
+	
+	<div class="col-md-6 col-sm-12 graph-col">
+		<div class="tile">
+			<h3>Project Total Sales</h3>
+			{{ Widgets.ProjectSales|raw }}
+		</div>
+	</div>
+	
+	<div class="col-md-6 col-sm-12 graph-col">
+		<div class="tile">
+			<h3>Paid Products</h3>
+			{{ Widgets.ProjectPaidTotal|raw }}
+		</div>
+	</div>
+</div>
 
 {% endblock %}

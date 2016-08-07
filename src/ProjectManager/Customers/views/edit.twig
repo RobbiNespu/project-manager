@@ -3,33 +3,47 @@
 
 {% block content %}
 
-    <h2>{% if obj.getId() %}Edit{% else %}Create{% endif %} Customer</h2>
-    <hr>
+    <h2>
+    	<i class="fa fa-folder-open right-padding-5"></i>
+    	{% if obj.getId() %}Edit{% else %}Create{% endif %} Customer
+    </h2>
 
 
-    <div>
-        <form method="post" class="form-group">
-            <input type="hidden" name="id" value="{{obj.getId()}}" />
+    <div class="panel panel-white">
+    	<div class="panel-body">
 
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" value="{{obj.getname()}}" class="form-control"/>
-
-            <label for="nickname">Nickname</label>
-            <input type="text" id="nickname" name="nickname" value="{{obj.getnickname()}}" class="form-control"/>
-
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" value="{{obj.getemail()}}" class="form-control"/>
-
-            <label for="phone">Phone</label>
-            <input type="text" id="phone" name="phone" value="{{obj.getphone()}}" class="form-control"/>
-
-            <label for="state">State</label>
-            <input type="text" id="state" name="state" value="{{obj.getstate()}}" class="form-control"/>
-
-            <br>
-
-            <input type="submit" class="btn btn-md btn-success" value="Save" />
-        </form>
+			<div class="panel-options">
+				<a class="btn btn-md btn-default"
+					href="{{ app.urlFor('Customers-Customer-List') }}"> <i
+					class="fa fa-arrow-circle-left"></i> Back
+				</a>
+			</div>    		
+    		
+    		<form method="post" class="form-group">
+	            <input type="hidden" name="id" value="{{obj.getId()}}" />
+	
+	            <label for="name">Name</label>
+	            <input type="text" id="name" name="name" value="{{obj.getname()}}" class="form-control"/>
+	
+	            <label for="nickname">Nickname</label>
+	            <input type="text" id="nickname" name="nickname" value="{{obj.getnickname()}}" class="form-control"/>
+	
+	            <label for="email">Email</label>
+	            <input type="text" id="email" name="email" value="{{obj.getemail()}}" class="form-control"/>
+	
+	            <label for="phone">Phone</label>
+	            <input type="text" id="phone" name="phone" value="{{obj.getphone()}}" class="form-control"/>
+	
+	            <label for="state">State</label>
+	            <input type="text" id="state" name="state" value="{{obj.getstate()}}" class="form-control"/>
+	
+	            <br>
+	
+	            <input type="submit" class="btn btn-md btn-success" value="Save" />
+	        </form>
+    	
+    	</div>
+        
     </div>
 
 {% endblock %}

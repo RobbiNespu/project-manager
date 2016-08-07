@@ -1,40 +1,64 @@
-{% extends '@Default/layout.twig' %}
+{% extends '@Default/layout.twig' %} {% block content %}
 
-{% block content %}
+<h2>
+	<i class="fa fa-gears right-padding-5"></i> Settings
+</h2>
 
-    <h2>Settings</h2>
+<div class="row">
+	<div class="col-md-6 col-sm-12">
+		<div class="panel panel-white panel-animated">
+			<div class="panel-heading">
+				<h4>User Information</h4>
+			</div>
 
-    <hr>
+			<div class="panel-body">
+				<label>Username</label>
+				<p>{{ user.getUsername() }}</p>
+				
+				<label>Login Time</label>
+				<p>{{ user.getLastLogin() | date('m/d/Y - h:i:s') }}</p>
+				
+				<label>Permissions</label>
+				<ul>
+					{% for role in user.getRoles() %}
+						<li>{{ role.getName() }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
 
-    <div class="col-md-6 col-sm-12">
-		
-        <h4>Password Changing</h4>
-        <br>
+	<div class="col-md-6 col-sm-12">
+		<div class="panel panel-white panel-animated">
+			<div class="panel-heading">
+				<h4>Password Changing</h4>
+			</div>
 
-        <form method="post" class="form-group">
+			<div class="panel-body">
+				<form method="post" class="form-group">
 
-            <label for="oldpassword">Old Password</label>
-            <input id="oldpassword" type="password" name="oldpassword" value="{{ oldpassword }}" class="form-control" placeholder="" required autofocus>
+					<label for="oldpassword">Old Password</label> <input
+						id="oldpassword" type="password" name="oldpassword"
+						value="{{ oldpassword }}" class="form-control" placeholder=""
+						required autofocus> <br> <label for="newpassword">New Password</label>
+					<input id="newpassword" type="password" name="newpassword"
+						value="{{ newpassword }}" class="form-control" placeholder=""
+						required> <br> <label for="newpasswordconf">Repeat New Password</label>
+					<input id="newpasswordconf" type="password" name="newpasswordconf"
+						value="{{ newpasswordconf }}" class="form-control" placeholder=""
+						required> <br>
 
-            <br>
+					<p style="text-align: center;">
+						<button class="btn btn-md btn-warning" type="submit">Change
+							Password</button>
+					</p>
 
-            <label for="newpassword">New Password</label>
-            <input id="newpassword" type="password" name="newpassword" value="{{ newpassword }}" class="form-control" placeholder="" required>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 
-            <br>
-
-            <label for="newpasswordconf">Repeat New Password</label>
-            <input id="newpasswordconf" type="password" name="newpasswordconf" value="{{ newpasswordconf }}" class="form-control" placeholder="" required>
-
-            <br>
-
-            <p style="text-align: center;">
-                <button class="btn btn-md btn-warning" type="submit">Change Password</button>
-            </p>
-
-        </form>
-
-    </div>
 
 
 {% endblock %}
