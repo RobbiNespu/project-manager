@@ -136,24 +136,26 @@
                                 <h4>Description</h4>
                                 <p>{{ obj.getDescription() }}</p>
                             </div>
-
-                            <div class="col-md-12 col-sm-12" style="text-align: center;">
-                                <hr>
-                                
-                                <h4>Total Hours Worked: {{ obj.getTotalHoursWorked() }} hours</h4>
-                                
-                                <!-- TODO: Refer to the Project speficic allocations  
-                                <p>
-                                	<a href="#">More Details</a>
-                                </p>
-                                
-                                 -->
-                                
-                                <hr>
-                                
-                                <h4>Value: $ {{ obj.getValue() }}</h4>
-                                
-                                <br>
+                        </div>
+                        
+                        <div class="row" style="padding:10px;">    
+                            
+                            <div class="col-md-6 col-sm-6">
+                                <h4>Total Hours Worked</h4>
+                                <p>{{ obj.getTotalHoursWorked() }} hours</p>
+                            </div>
+                            
+                            <div class="col-md-6 col-sm-6">
+                                <h4>Value</h4>
+                                <p>$ {{ obj.getValue() }}</p>
+                            </div>
+                         </div>
+                         
+                         <div class="row" style="padding:10px;">   
+                            <div class="col-md-12 col-sm-12">
+                            	<h4>Allocations</h4>
+                            
+                                 {{ allocationTables[obj.getId()].renderTable()|raw }}                                 	
                             </div>
                         </div>
 

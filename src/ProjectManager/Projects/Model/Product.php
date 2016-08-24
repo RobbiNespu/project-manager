@@ -57,6 +57,7 @@ class Product extends Model{
      * @ORM\OneToMany(targetEntity="ProjectManager\Projects\Model\Allocation",
      *      mappedBy="product",
      *      cascade={"persist","remove"})
+     * @ORM\OrderBy({"dateWorked" = "DESC"})
      */
     private $allocations;
 

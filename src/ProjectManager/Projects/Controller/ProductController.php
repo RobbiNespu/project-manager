@@ -7,6 +7,9 @@ use SIOFramework\Acl\Controller\SecuredController;
 use SIOFramework\Common\Factory\StandardFactory;
 use ProjectManager\Projects\Model\Product;
 use Slim\Slim;
+use SIOFramework\Table\StandardTable;
+use ProjectManager\Projects\Model\Allocation;
+use SIOFramework\Table\Builder\ModelTableBuilder;
 
 
 class ProductController extends SecuredController
@@ -38,6 +41,30 @@ class ProductController extends SecuredController
 
         $this->data['list'] = $list;
         $this->data['project'] = $project;
+        
+        /**
+         * @var ModelTableBuilder $tableBuilder
+         */
+        $tableBuilder = $this->app->container->get('ModelTableBuilder');
+        $allocationTables = [];
+        
+        foreach($list as $product)
+        {
+        	/**
+        	 * @var Product $product
+        	 */
+        	$allocationTables[$product->getId()] = $tableBuilder->buildTable(
+        			get_class(new StandardTable()),
+        			['User','Date','Hours Worked'],
+        			['user.username','dateWorked','value'],
+        			$product->getAllocations(),
+        			'', // title
+        			'', // id
+        			'table table-striped' // class
+        		);
+        }
+        
+        $this->data['allocationTables'] = $allocationTables;
 
         $this->render('@Projects/product/list.twig',$this->data);
     }

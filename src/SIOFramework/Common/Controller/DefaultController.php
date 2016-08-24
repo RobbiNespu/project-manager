@@ -52,7 +52,7 @@ abstract class DefaultController implements ControllerInterface
         $this->widgets = array();
         $this->twig = $this->app->container->get('twig');
         
-        $this->databaseFactory = new StandardFactory($app);
+        $this->databaseFactory = $app->container->get('databaseFactory');
     }
 
     /**
