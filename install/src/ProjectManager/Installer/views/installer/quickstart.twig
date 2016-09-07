@@ -1,0 +1,88 @@
+{% extends '@Default/layout.twig' %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-xs-12">
+		<h3>
+			<i class="fa fa-database"></i>
+			Database Setup
+		</h3>
+		
+		<form method="post" action="{{ app.urlFor('install') }}">
+			<div class="form-group">
+				
+				<div class="row">
+					<div class="col-xs-12 col-sm-6">
+						<label>Host</label>
+						<input type="text" name="conf_db_host" class="form-control" placeholder="localhost" />
+					</div>
+					
+					<div class="col-xs-12 col-sm-6">
+						<label>Database User</label>
+						<input type="text" name="conf_db_user" class="form-control" placeholder="root" />
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-xs-12 col-sm-6">
+						<label>Database Name</label>
+						<input type="text" name="conf_db_name" class="form-control" placeholder="projmanager" />
+					</div>
+					
+					<div class="col-xs-12 col-sm-6">
+						<label>Database Password</label>
+						<input type="password" name="conf_db_password" class="form-control" />
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		<div class="separator col-xs-12"></div>
+		
+		
+		<div class="col-xs-12">
+			<h3>
+				<i class="fa fa-cogs"></i>
+				System Setup
+			</h3>
+			
+			<div class="form-group">
+				
+				<div class="row">
+					<div class="col-xs-12 col-sm-6">
+						<label>Admin User</label>
+						<input type="text" name="admin_user" class="form-control" placeholder="admin" />
+					</div>
+					
+					<div class="col-xs-12 col-sm-6">
+						<label>Admin Password</label>
+						<input type="password" name="admin_password" class="form-control" />
+					</div>
+					
+					<div class="col-xs-12 col-sm-6">
+						<label>Install Example Data?</label>
+						<select class="form-control" name="install_data">
+							<option value="1">Yes</option>
+							<option value="0">No</option>
+						</select>
+					</div>
+					
+				</div>
+			</div>
+			
+			<div class="separator"></div>
+			
+			<div class="row">
+				<div class="col-xs-12 center">
+					<button type="submit" class="btn btn-md btn-success">Instalar</a>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+</div>
+
+{% endblock %}

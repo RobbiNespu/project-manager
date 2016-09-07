@@ -1,0 +1,88 @@
+/* 
+    Created on : Sep 11, 2015, 1:46:32 PM
+    Author     : silva i.o.
+*/
+
+@font-face {
+    font-family: Oxygen;
+    src: url(fonts/Oxygen-Light.ttf);
+}
+/*
+ * Globals
+ */
+html, body {
+    border: 0px;
+    margin: auto;
+    padding: 0px;
+    background-color: #5D91A6;
+    color: #555;
+    font-family: 'Oxygen', sans-serif;
+}
+
+.fa {
+	padding-right: 7px;
+}
+
+.separator {
+	margin: 16px 0;
+	height: 1px;
+	background-color: #fff;
+}
+
+.installer-box {
+    margin-top: 30px;
+    background-color: #fff;
+    
+    /*-webkit-box-shadow: -3px 3px 7px 1px rgba(168,168,168,0.72);
+	-moz-box-shadow: -3px 3px 7px 1px rgba(168,168,168,0.72);
+	box-shadow: -3px 3px 7px 1px rgba(168,168,168,0.72);*/
+}
+
+.installer-title {
+	color: #f3f3f3;
+	background-color: #030000;
+	border-bottom: 3px solid #E6AE55;
+}
+
+.installer-box h2 {
+	text-align: center;
+	font-size: 2.05em;
+	padding: 20px 0px;
+	padding-bottom: 10px;
+}
+
+.installer-box h3 {
+	font-size: 1.8em;
+	padding-bottom: 9px;
+	border-bottom: 2px solid #2E5C80;
+	margin-bottom: 15px;
+}
+
+.installer-container {
+    padding: 18px 25px;
+}
+
+
+.btn-login{
+	background-color: #2E5C80;
+	color: #f3f3f3;
+}
+
+.btn-login:hover {
+	color: #f3f3f3;
+	background-color: #4E6D80;
+}
+
+.right-padding-5 {
+	padding-right: 5px;
+}
+
+label {
+	padding-top: 15px;
+}
+
+.center{
+	text-align: center;
+}
+
+

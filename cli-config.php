@@ -1,6 +1,6 @@
 <?php
 
-require_once 'vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 use \Doctrine\ORM\Tools\Console\ConsoleRunner;
 
@@ -8,7 +8,7 @@ use \Doctrine\ORM\Tools\Console\ConsoleRunner;
 $app = new \Slim\Slim();
 
 // Loads configurations
-require 'conf/bootstrap.php';
+require __DIR__ . '/conf/bootstrap.php';
 
 // Returns the EntityManager for console running
 return ConsoleRunner::createHelperSet($app->container->get('orm'));

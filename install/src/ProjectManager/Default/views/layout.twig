@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Project Manager</title>
+
+<meta name="description" content="My Project Manager">
+<meta name="author" content="Iago Oliveira da Silva">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="{{ resources }}/css/bootstrap.min.css" />
+<link rel="stylesheet" href="{{ resources }}/css/morris.css" />
+<link rel="stylesheet" href="{{ resources }}/css/metisMenu.min.css" />
+<link rel="stylesheet" href="{{ resources }}/css/datatables.min.css" />
+<link rel="stylesheet" href="{{ resources }}/css/font-awesome.css" />
+<link rel="stylesheet" href="{{ resources }}/css/installer.css" />
+
+<script src="{{ resources }}/js/jquery.min.js"></script>
+<script src="{{ resources }}/js/bootstrap.min.js"></script>
+<script src="{{ resources }}/js/raphael.min.js"></script>
+<script src="{{ resources }}/js/morris.min.js"></script>
+<script src="{{ resources }}/js/datatables.min.js"></script>
+<script src="{{ resources }}/js/metisMenu.min.js"></script>
+<script src="{{ resources }}/js/admin.js"></script>
+
+</head>
+
+<body>
+
+	<div class="container">
+	
+		<div class="installer-box">
+
+			<div class="installer-title">
+				<h2>Project Manager</h2>
+			</div>
+	
+			<div class="installer-container">
+				{% block content %} {% endblock %}
+			</div>
+		</div>
+		
+	</div>
+	
+</body>
+
+</html>

@@ -1,13 +1,14 @@
 {
-    "name": "sio/project-manager",
-    "description": "Freelancer Project Manager",
+    "name": "sio/project-manager-installer",
+    "description": "Freelancer Project Manager Installer",
     "require": {
         "ext-curl": "*",
         "ext-json": "*",
         "doctrine/orm": "2.5",
         "twig/twig": "1.23",
         "slim/slim": "2.6",
-        "aura/session": "2.0"
+        "aura/session": "2.0",
+        "symfony/console": "~2.5"
     },
     "license": "MIT",
     "authors": [
@@ -21,11 +22,6 @@
              "SIOFramework\\" : "src/SIOFramework",
              "ProjectManager\\" : "src/ProjectManager"
          }
-    },
-    "autoload-dev" : {
-        "psr-4": {
-            "SIOForge\\" : "forge/SIOForge"
-        }
     },
     "minimum-stability": "RC"
 }
