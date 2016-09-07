@@ -7,18 +7,15 @@ Open Source Project Management System. I'll use this project to keep my freelanc
 ### Requisites
 
 1. Composer
-2. PHP
+2. PHP > 5.5
 3. Apache
 4. Database (Preferred MySQL)
 
 ### Instructions
 
 1. Clone the github repository
-2. Run composer install (if you don't have composer, please go to composer website and install it first).
-3. Create a database for this project.
-4. Change the file conf/database.php with your database information
-5. Run schema.sql on your database.
-6. Run schema_update.sh to update the database (Linux. If you are using windows, please run the following: php vendor/bin/doctrine orm:schema-tool:update --force --dump-sql)
-7. Go to http://localhost/projectfolder/login
-8. Username and password: admin
+2. Create a database for this project.
+3. Go to http://localhost/projectfolder/install
+4. Type the database information, the admin information and choose if you want to install the sample data.
+5. Go to http://localhost/projectfolder/login
 
