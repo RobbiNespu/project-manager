@@ -73,7 +73,7 @@ CREATE TABLE `pm_product` (
 
 LOCK TABLES `pm_product` WRITE;
 /*!40000 ALTER TABLE `pm_product` DISABLE KEYS */;
-INSERT INTO `pm_product` VALUES (3,'GrÃ¡ficos de AvaliaÃ§Ã£o','GrÃ¡ficos com os dados do form de avaliaÃ§Ã£o de cada unidade',150,3,6,0),(4,'CMS Site','CMS com contato e unidades.',300,10,6,1),(5,'Kozan Reservas','Sistema de login para cada gerente com reservas do dia e histÃ³rico de reservas.',300,10,6,1),(6,'CMS Site','CMS do site da GranvitÃ³ria',400,8,7,1),(7,'IntegraÃ§Ã£o API','IntegraÃ§Ã£o com a API do sistema de gerenciamento de imÃ³veis',600,12,7,1),(8,'Users Module','User management module',0,1,8,1),(9,'Customers Module','Customers module',0,1,8,1),(10,'Projects Module','Projects module with projects and products.',0,2,8,1),(11,'Reports Module','Module with graphs and other reports',0,3,8,0),(12,'Documentation','Project documentation.',0,1,8,1),(13,'Documentation','Project documentation.',0,1,8,1);
+INSERT INTO `pm_product` VALUES (8,'Users Module','User management module',0,1,8,1),(9,'Customers Module','Customers module',0,1,8,1),(10,'Projects Module','Projects module with projects and products.',0,2,8,1),(11,'Reports Module','Module with graphs and other reports',0,3,8,0),(12,'Documentation','Project documentation.',0,1,8,1),(13,'Documentation','Project documentation.',0,1,8,1);
 /*!40000 ALTER TABLE `pm_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
