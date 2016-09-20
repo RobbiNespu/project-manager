@@ -1,6 +1,7 @@
 # Project Manager
 Open Source Project Management System. I'll use this project to keep my freelancer informations up-to-date.
 
+![Project Manager Dashboard](http://i.imgur.com/5mo4Qmp.png)
 
 ## Installation
 
